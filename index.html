@@ -230,7 +230,7 @@
     <div class="subtitle">Performance tracker across Instagram, Facebook & TikTok</div>
   </div>
   <div class="header-right">
-    <div class="updated" id="lastUpdated">Last updated: Feb 28, 2026</div>
+    <div class="updated" id="lastUpdated">Last updated: Feb 28, 2026, 5:30 PM MYT</div>
     <div style="margin-top: 8px;">
       <button onclick="exportData()" style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: white; font-size: 12px; cursor: pointer;">Export CSV</button>
       <button onclick="saveData()" style="padding: 6px 16px; border-radius: 20px; border: none; background: var(--amber); color: white; font-size: 12px; cursor: pointer; margin-left: 4px; font-weight: 600;">💾 Save</button>
@@ -297,13 +297,13 @@
 // ── DATA STORE ──
 const DEFAULT_POSTS = [
   { day: 0, date: "Feb 27", platform: "Instagram", title: "Brand Launch: We're Trusty Tails", format: "8-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 3, url: "https://www.instagram.com/p/DVSALuiE8Vw/", notes: "Brand launch v4" },
-  { day: 0, date: "Feb 27", platform: "Facebook", title: "Brand Launch: Text + Graphic", format: "Text + image", likes: 0, comments: 1, shares: 0, saves: 0, views: 58, reach: 0, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Pinned to Featured" },
-  { day: 0, date: "Feb 28", platform: "Facebook", title: "Brand Launch: Carousel", format: "8-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid0NqMtFwJKqa1QSkwNdBj88aymBUNBuiw7K9yHo9YKNhkqw43w6MEmo7Upi9T6w278l", notes: "Same as IG v4" },
-  { day: 0, date: "Feb 27", platform: "TikTok", title: "Brand Launch: Cover", format: "Photo post", likes: 0, comments: 0, shares: 0, saves: 0, views: 48, reach: 0, impressions: 0, followers: 0, url: "https://www.tiktok.com/@trustytails.vet/photo/7611715278094781704", notes: "Posted by Raghav" },
-  { day: 0, date: "Feb 28", platform: "TikTok", title: "Vet care powered by tech", format: "Photo post", likes: 0, comments: 0, shares: 0, saves: 0, views: 19, reach: 0, impressions: 0, followers: 0, url: "https://www.tiktok.com/@trustytails.vet/photo/7611724062045392135", notes: "Extra brand post by Raghav" },
-  { day: 1, date: "Feb 28", platform: "Instagram", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 3, url: "https://www.instagram.com/p/DVSIiuQEx6C/", notes: "Day 1 calendar" },
-  { day: 1, date: "Feb 28", platform: "Facebook", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid06t2KkjRumLXNPBNfcqdyY4L59an8mND58Wys5AiYZes12qavFGomrs4QdGuSXXhHl", notes: "Day 1 calendar" },
-  { day: 1, date: "Feb 28", platform: "TikTok", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 14, reach: 0, impressions: 0, followers: 0, url: "https://www.tiktok.com/@trustytails.vet/photo/7611731883709222151", notes: "Posted by Raghav" },
+  { day: 0, date: "Feb 27", platform: "Facebook", title: "Brand Launch: Text + Graphic", format: "Text + image", likes: 0, comments: 0, shares: 0, saves: 0, views: 9, reach: 1, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Pinned to Featured. 9 views, 1 viewer, 0 interactions (FB insights Feb 28)" },
+  { day: 0, date: "Feb 28", platform: "Facebook", title: "Brand Launch: Carousel", format: "8-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid0NqMtFwJKqa1QSkwNdBj88aymBUNBuiw7K9yHo9YKNhkqw43w6MEmo7Upi9T6w278l", notes: "Same as IG v4. Separate carousel post." },
+  { day: 0, date: "Feb 27", platform: "TikTok", title: "Brand Launch: Cover", format: "Photo post", likes: 0, comments: 0, shares: 0, saves: 0, views: 51, reach: 0, impressions: 0, followers: 1, url: "https://www.tiktok.com/@trustytails.vet/photo/7611715278094781704", notes: "Posted by Raghav. 51 views (Feb 28 update)" },
+  { day: 0, date: "Feb 28", platform: "TikTok", title: "Vet care powered by tech", format: "Photo post", likes: 0, comments: 0, shares: 0, saves: 0, views: 45, reach: 0, impressions: 0, followers: 1, url: "https://www.tiktok.com/@trustytails.vet/photo/7611724062045392135", notes: "Extra brand post by Raghav. 45 views (Feb 28 update)" },
+  { day: 1, date: "Feb 28", platform: "Instagram", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 3, url: "https://www.instagram.com/p/DVSIiuQEx6C/", notes: "Day 1. 0 likes, 0 comments (Feb 28 1h after post)" },
+  { day: 1, date: "Feb 28", platform: "Facebook", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 6, reach: 1, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid06t2KkjRumLXNPBNfcqdyY4L59an8mND58Wys5AiYZes12qavFGomrs4QdGuSXXhHl", notes: "Day 1. 6 views, 1 viewer, 0 interactions (FB insights Feb 28)" },
+  { day: 1, date: "Feb 28", platform: "TikTok", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 55, reach: 0, impressions: 0, followers: 1, url: "https://www.tiktok.com/@trustytails.vet/photo/7611731883709222151", notes: "Posted by Raghav. 55 views, 2 likes (Feb 28 update)" },
 ];
 
 const CALENDAR = [
@@ -330,7 +330,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-02-28-v2";
+const DATA_VERSION = "2026-02-28-v3";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
