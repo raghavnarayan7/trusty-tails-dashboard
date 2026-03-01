@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+window.addEventListener('message', async (event) => {
+    if (event.data && event.data.action === 'fetchSlides') {
+        const files = event.data.files;
+        const results = [];
+        for (const name of files) {
+            try {
+                const response = await fetch('/slides/' + name);
+                const buffer = await response.arrayBuffer();
+                results.push({ name, buffer, ok: true });
+            } catch (e) {
+                results.push({ name, error: e.message, ok: false });
+            }
+        }
+        event.source.postMessage({ action: 'slidesReady', results }, '*', results.filter(r => r.ok).map(r => r.buffer));
+    }
+});
+window.parent.postMessage({ action: 'helperReady' }, '*');
+</script>
+</body>
+</html>
