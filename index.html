@@ -304,10 +304,12 @@ const DEFAULT_POSTS = [
   { day: 1, date: "Feb 28", platform: "Instagram", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 3, url: "https://www.instagram.com/p/DVSIiuQEx6C/", notes: "Day 1. 0 likes, 0 comments (Feb 28 1h after post)" },
   { day: 1, date: "Feb 28", platform: "Facebook", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 6, reach: 1, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid06t2KkjRumLXNPBNfcqdyY4L59an8mND58Wys5AiYZes12qavFGomrs4QdGuSXXhHl", notes: "Day 1. 6 views, 1 viewer, 0 interactions (FB insights Feb 28)" },
   { day: 1, date: "Feb 28", platform: "TikTok", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 55, reach: 0, impressions: 0, followers: 1, url: "https://www.tiktok.com/@trustytails.vet/photo/7611731883709222151", notes: "Posted by Raghav. 55 views, 2 likes (Feb 28 update)" },
+  { day: 2, date: "Mar 1", platform: "Instagram", title: "Cat Expression Translator", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 3, url: "https://www.instagram.com/p/DVUlrr7k_Yy/", notes: "Day 2. Posted Mar 1. First comment: Which expression surprised you the most?" },
+  { day: 2, date: "Mar 1", platform: "Facebook", title: "Cat Expression Translator", format: "Text + image (1200x630)", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet", notes: "Day 2. Posted Mar 1. Canvas-drawn graphic." },
+  { day: 2, date: "Mar 1", platform: "TikTok", title: "Cat Expression Translator", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "", notes: "Day 2. Pending Raghav manual post. Images in social_content/day2_cat_expressions/" },
 ];
 
 const CALENDAR = [
-  { day: 2, date: "Mar 1", title: "Cat Expression Translator" },
   { day: 3, date: "Mar 2", title: "Holi & Pets: Safe Colours" },
   { day: 4, date: "Mar 3", title: "When to Call the ER" },
   { day: 5, date: "Mar 4", title: "Pet Wellness Myths vs. Reality" },
@@ -330,7 +332,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-02-28-v3";
+const DATA_VERSION = "2026-03-01-v1";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
