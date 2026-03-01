@@ -306,7 +306,7 @@ const DEFAULT_POSTS = [
   { day: 1, date: "Feb 28", platform: "TikTok", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 55, reach: 0, impressions: 0, followers: 1, url: "https://www.tiktok.com/@trustytails.vet/photo/7611731883709222151", notes: "Posted by Raghav. 55 views, 2 likes (Feb 28 update)" },
   { day: 2, date: "Mar 1", platform: "Instagram", title: "Cat Expression Translator", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 3, url: "https://www.instagram.com/p/DVUlrr7k_Yy/", notes: "Day 2. Posted Mar 1. First comment: Which expression surprised you the most?" },
   { day: 2, date: "Mar 1", platform: "Facebook", title: "Cat Expression Translator", format: "Text + image (1200x630)", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "https://www.facebook.com/TrustyTails.Vet", notes: "Day 2. Posted Mar 1. Canvas-drawn graphic." },
-  { day: 2, date: "Mar 1", platform: "TikTok", title: "Cat Expression Translator", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "", notes: "Day 2. Pending Raghav manual post. Images in social_content/day2_cat_expressions/" },
+  { day: 2, date: "Mar 1", platform: "TikTok", title: "Cat Expression Translator", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 1, url: "", notes: "Day 2. Posted Mar 1 by Raghav." },
 ];
 
 const CALENDAR = [
@@ -332,7 +332,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-01-v1";
+const DATA_VERSION = "2026-03-01-v2";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
