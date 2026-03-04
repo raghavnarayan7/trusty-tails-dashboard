@@ -319,8 +319,8 @@ const DEFAULT_POSTS = [
   { day: 4, date: "Mar 3", platform: "Facebook", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 1, impressions: 0, followers: 2, url: "", notes: "Reach 1 (MBS Mar 4). Evening post ~5:30pm." },
   { day: 4, date: "Mar 3", platform: "TikTok", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 95, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7612962238198058247", notes: "95 views, 2 likes (Mar 4). Big TT jump from 7→95 overnight." },
   // Day 5 — Holi & Pet Safety (Mar 4)
-  { day: 5, date: "Mar 4", platform: "Instagram", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 4, url: "", notes: "Posted Mar 4 8:36am. v4 white bg + powder splashes." },
-  { day: 5, date: "Mar 4", platform: "Facebook", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "", notes: "Posted Mar 4 8:36am." },
+  { day: 5, date: "Mar 4", platform: "Instagram", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 10, url: "https://www.instagram.com/p/DVcmJ1LE7SQ/", notes: "Posted Mar 4 8:36am. v4 white bg + powder splashes." },
+  { day: 5, date: "Mar 4", platform: "Facebook", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid0Ny1QEJL42KrQuus4yLDW3yAoTHAj6YPSRNEh4vkKBVqfNKtpizG5V6ewnJq6eqSBl", notes: "Posted Mar 4 8:36am." },
   { day: 5, date: "Mar 4", platform: "TikTok", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7613233295265991954", notes: "Posted Mar 4." },
 ];
 
@@ -345,7 +345,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-04-v2";
+const DATA_VERSION = "2026-03-04-v3";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
