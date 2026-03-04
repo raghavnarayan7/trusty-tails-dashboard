@@ -318,22 +318,23 @@ const DEFAULT_POSTS = [
   { day: 4, date: "Mar 3", platform: "Instagram", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 1, comments: 1, shares: 0, saves: 0, views: 2, reach: 3, impressions: 0, followers: 4, url: "", notes: "Reach 3, 1 like, 1 comment (MBS Mar 4). Evening post ~5:30pm." },
   { day: 4, date: "Mar 3", platform: "Facebook", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 1, impressions: 0, followers: 2, url: "", notes: "Reach 1 (MBS Mar 4). Evening post ~5:30pm." },
   { day: 4, date: "Mar 3", platform: "TikTok", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 95, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7612962238198058247", notes: "95 views, 2 likes (Mar 4). Big TT jump from 7→95 overnight." },
-  // Bonus — Holi & Pet Safety (Mar 4) — wildcard post, Holi day
-  { day: 4.5, date: "Mar 4", platform: "Instagram", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 4, url: "", notes: "Just posted (Mar 4 8:36am). v4 white bg + powder splashes." },
-  { day: 4.5, date: "Mar 4", platform: "Facebook", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "", notes: "Just posted (Mar 4 8:36am)." },
-  { day: 4.5, date: "Mar 4", platform: "TikTok", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7613233295265991954", notes: "Just posted (Mar 4)." },
+  // Day 5 — Holi & Pet Safety (Mar 4)
+  { day: 5, date: "Mar 4", platform: "Instagram", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 4, url: "", notes: "Posted Mar 4 8:36am. v4 white bg + powder splashes." },
+  { day: 5, date: "Mar 4", platform: "Facebook", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "", notes: "Posted Mar 4 8:36am." },
+  { day: 5, date: "Mar 4", platform: "TikTok", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7613233295265991954", notes: "Posted Mar 4." },
 ];
 
 const CALENDAR = [
-  { day: 5, date: "Mar 4", title: "Pet Wellness Myths vs. Reality" },
-  { day: 7, date: "Mar 6", title: "This or That: Pet Parent Poll" },
-  { day: 8, date: "Mar 7", title: "Weekend Zoomies Explained" },
-  { day: 9, date: "Mar 8", title: "Ask Our Vet: Q&A" },
-  { day: 10, date: "Mar 9", title: "Monthly Health Checklist" },
-  { day: 11, date: "Mar 10", title: "Vet Visit Prep" },
-  { day: 12, date: "Mar 11", title: "Spot the Signs: Pet Pain" },
-  { day: 13, date: "Mar 12", title: "Pet Parent Red Flags (meme)" },
-  { day: 14, date: "Mar 13", title: "Thank You, KL Pet Parents" },
+  { day: 6, date: "Mar 5", title: "Pet Wellness Myths vs. Reality" },
+  { day: 7, date: "Mar 6", title: "Gemuk or Healthy? Cat Weight" },
+  { day: 8, date: "Mar 7", title: "This or That: Pet Parent Poll" },
+  { day: 9, date: "Mar 8", title: "Weekend Zoomies Explained" },
+  { day: 10, date: "Mar 9", title: "Ask Our Vet: Q&A" },
+  { day: 11, date: "Mar 10", title: "Monthly Health Checklist" },
+  { day: 12, date: "Mar 11", title: "Vet Visit Prep" },
+  { day: 13, date: "Mar 12", title: "Spot the Signs: Pet Pain" },
+  { day: 14, date: "Mar 13", title: "Pet Parent Red Flags (meme)" },
+  { day: 15, date: "Mar 14", title: "Thank You, KL Pet Parents" },
 ];
 
 // Expand calendar into placeholder posts
@@ -344,7 +345,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-04-v1";
+const DATA_VERSION = "2026-03-04-v2";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
@@ -397,7 +398,7 @@ function renderKPIs() {
   const postedDays = new Set(posts.filter(p => totalEng(p) > 0).map(p => p.day)).size;
 
   const kpis = [
-    { label: "Total Posts", value: posts.filter(p => p.day <= 5).length, delta: posts.filter(p => p.day <= 5).length + " active" },
+    { label: "Total Posts", value: posts.filter(p => p.day <= 6).length, delta: posts.filter(p => p.day <= 6).length + " active" },
     { label: "Total Views", value: fmt(totalViews), delta: totalViews > 0 ? "across all platforms" : "Key metric for TikTok" },
     { label: "Total Likes", value: fmt(totalLikes), delta: activePosts.length ? "across " + activePosts.length + " posts" : "Enter metrics to see" },
     { label: "Total Comments", value: fmt(totalComments), delta: "" },
@@ -446,7 +447,7 @@ function renderPlatformCards() {
 function renderTable() {
   let filtered = currentFilter === "all" ? [...posts] : posts.filter(p => p.platform === currentFilter);
   // Only show posts up to day 1 + any future with data
-  filtered = filtered.filter(p => p.day <= 5 || totalEng(p) > 0);
+  filtered = filtered.filter(p => p.day <= 6 || totalEng(p) > 0);
 
   const tbody = document.getElementById("postTableBody");
   tbody.innerHTML = filtered.map((p, idx) => {
