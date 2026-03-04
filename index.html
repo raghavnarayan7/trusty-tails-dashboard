@@ -314,10 +314,14 @@ const DEFAULT_POSTS = [
   { day: 3, date: "Mar 2", platform: "Instagram", title: "Meet Kuching", format: "4-slide carousel", likes: 1, comments: 0, shares: 1, saves: 0, views: 6, reach: 3, impressions: 0, followers: 4, url: "", notes: "Views 6, reach 3, 1 share! (MBS Mar 3)" },
   { day: 3, date: "Mar 2", platform: "Facebook", title: "Meet Kuching", format: "4-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 35, reach: 3, impressions: 0, followers: 2, url: "", notes: "Views 35 (Reel 18 + Multi 17), reach 3, 2 likes (MBS Mar 3)" },
   { day: 3, date: "Mar 2", platform: "TikTok", title: "Meet Kuching", format: "4-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 151, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7612473578612591880", notes: "151 views, 1 like (Mar 3). Top TT views!" },
-  // Day 4 — ER Decision Guide (Mar 3) — Holi skipped (not popular in MY)
-  { day: 4, date: "Mar 3", platform: "Instagram", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 1, shares: 0, saves: 0, views: 2, reach: 1, impressions: 0, followers: 4, url: "", notes: "Crosspost; views 2, reach 1, 1 comment (MBS Mar 3). Evening post ~5:30pm." },
-  { day: 4, date: "Mar 3", platform: "Facebook", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "", notes: "Crossposted from IG (MBS Mar 3). Evening post ~5:30pm." },
-  { day: 4, date: "Mar 3", platform: "TikTok", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 7, reach: 0, impressions: 0, followers: 2, url: "", notes: "7 views (Mar 3). Just posted ~20min before pull." },
+  // Day 4 — ER Decision Guide (Mar 3) — evening post ~5:30pm
+  { day: 4, date: "Mar 3", platform: "Instagram", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 1, comments: 1, shares: 0, saves: 0, views: 2, reach: 3, impressions: 0, followers: 4, url: "", notes: "Reach 3, 1 like, 1 comment (MBS Mar 4). Evening post ~5:30pm." },
+  { day: 4, date: "Mar 3", platform: "Facebook", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 1, impressions: 0, followers: 2, url: "", notes: "Reach 1 (MBS Mar 4). Evening post ~5:30pm." },
+  { day: 4, date: "Mar 3", platform: "TikTok", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 95, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7612962238198058247", notes: "95 views, 2 likes (Mar 4). Big TT jump from 7→95 overnight." },
+  // Bonus — Holi & Pet Safety (Mar 4) — wildcard post, Holi day
+  { day: 4.5, date: "Mar 4", platform: "Instagram", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 4, url: "", notes: "Just posted (Mar 4 8:36am). v4 white bg + powder splashes." },
+  { day: 4.5, date: "Mar 4", platform: "Facebook", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "", notes: "Just posted (Mar 4 8:36am)." },
+  { day: 4.5, date: "Mar 4", platform: "TikTok", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.tiktok.com/@trustytails.vet/photo/7613233295265991954", notes: "Just posted (Mar 4)." },
 ];
 
 const CALENDAR = [
@@ -340,7 +344,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-03-v1";
+const DATA_VERSION = "2026-03-04-v1";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
