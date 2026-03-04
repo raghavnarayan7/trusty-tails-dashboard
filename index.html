@@ -397,7 +397,7 @@ function renderKPIs() {
   const postedDays = new Set(posts.filter(p => totalEng(p) > 0).map(p => p.day)).size;
 
   const kpis = [
-    { label: "Total Posts", value: posts.filter(p => p.day <= 4).length, delta: posts.filter(p => p.day <= 4).length + " active" },
+    { label: "Total Posts", value: posts.filter(p => p.day <= 5).length, delta: posts.filter(p => p.day <= 5).length + " active" },
     { label: "Total Views", value: fmt(totalViews), delta: totalViews > 0 ? "across all platforms" : "Key metric for TikTok" },
     { label: "Total Likes", value: fmt(totalLikes), delta: activePosts.length ? "across " + activePosts.length + " posts" : "Enter metrics to see" },
     { label: "Total Comments", value: fmt(totalComments), delta: "" },
@@ -446,7 +446,7 @@ function renderPlatformCards() {
 function renderTable() {
   let filtered = currentFilter === "all" ? [...posts] : posts.filter(p => p.platform === currentFilter);
   // Only show posts up to day 1 + any future with data
-  filtered = filtered.filter(p => p.day <= 4 || totalEng(p) > 0);
+  filtered = filtered.filter(p => p.day <= 5 || totalEng(p) > 0);
 
   const tbody = document.getElementById("postTableBody");
   tbody.innerHTML = filtered.map((p, idx) => {
