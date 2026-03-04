@@ -359,7 +359,7 @@ let sortCol = 0;
 let sortAsc = true;
 
 // ── HELPER FUNCTIONS ──
-function engRate(p) { return p.reach > 0 ? (p.likes + p.comments + p.shares + p.saves) / p.reach : 0; }
+function engRate(p) { const denom = p.reach > 0 ? p.reach : (p.views || 0); return denom > 0 ? (p.likes + p.comments + p.shares + p.saves) / denom : 0; }
 function totalEng(p) { return p.likes + p.comments + p.shares + p.saves; }
 function fmt(n) { return n >= 1000 ? (n / 1000).toFixed(1) + "K" : n.toString(); }
 function pctFmt(n) { return n > 0 ? (n * 100).toFixed(1) + "%" : "—"; }
