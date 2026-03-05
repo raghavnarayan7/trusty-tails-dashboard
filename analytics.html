@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusty Tails — Website Analytics Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<meta property="og:title" content="Trusty Tails — Website Analytics Dashboard">
+<meta property="og:description" content="Weekly website traffic and analytics tracker for Trusty Tails Veterinary Hospital.">
+<meta property="og:type" content="website">
+<meta name="description" content="Weekly website traffic and analytics tracker for Trusty Tails Veterinary Hospital.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --teal: #0D7377;
+    --teal-light: #E8F5F5;
+    --teal-dark: #0A5C5F;
+    --amber: #E8A838;
+    --amber-light: #FFF8EC;
+    --charcoal: #2D3436;
+    --warm-white: #FFFDF8;
+    --surface: #F7F5F0;
+    --ig-pink: #E1306C;
+    --ig-bg: #FFF0F5;
+    --fb-blue: #1877F2;
+    --fb-bg: #EBF0FA;
+    --tt-black: #010101;
+    --tt-bg: #F0FAF0;
+    --google-blue: #4285F4;
+    --google-bg: #EBF2FF;
+    --organic-green: #34A853;
+    --direct-purple: #7B61FF;
+    --referral-orange: #FF6D00;
+    --green: #27AE60;
+    --red: #E74C3C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--surface); color: var(--charcoal); }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    color: white;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header h1 { font-size: 24px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+  .header h1 .icon { font-size: 28px; }
+  .header .subtitle { opacity: 0.8; font-size: 13px; margin-top: 4px; }
+  .header .nav-links { display: flex; gap: 12px; align-items: center; }
+  .header .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.2s;
+  }
+  .header .nav-links a:hover, .header .nav-links a.active {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border-color: rgba(255,255,255,0.5);
+  }
+  .header-right { text-align: right; }
+  .header .updated { font-size: 12px; opacity: 0.6; }
+
+  /* Week Selector */
+  .week-selector {
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border-bottom: 1px solid #eee;
+  }
+  .week-selector label { font-size: 13px; font-weight: 600; color: var(--teal); }
+  .week-selector select {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .week-selector .date-range { font-size: 12px; color: #888; margin-left: 8px; }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+    padding: 24px 32px;
+  }
+  .kpi-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+  .kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 8px; }
+  .kpi-value { font-size: 28px; font-weight: 800; color: var(--teal); }
+  .kpi-delta { font-size: 11px; margin-top: 4px; }
+  .kpi-delta.up { color: var(--green); }
+  .kpi-delta.down { color: var(--red); }
+  .kpi-delta.neutral { color: #888; }
+
+  /* Charts section */
+  .charts-row {
+    padding: 0 32px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .charts-row.triple { grid-template-columns: 2fr 1fr; }
+  .chart-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .chart-card h3 { font-size: 14px; color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .chart-card h3 .chart-icon { font-size: 16px; }
+
+  /* Source cards */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    padding: 0 32px 24px;
+  }
+  .source-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border-left: 4px solid;
+    text-align: center;
+  }
+  .source-card .source-name { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 6px; }
+  .source-card .source-sessions { font-size: 24px; font-weight: 800; }
+  .source-card .source-pct { font-size: 12px; color: #888; margin-top: 2px; }
+  .source-card.organic { border-color: var(--organic-green); }
+  .source-card.organic .source-sessions { color: var(--organic-green); }
+  .source-card.direct { border-color: var(--direct-purple); }
+  .source-card.direct .source-sessions { color: var(--direct-purple); }
+  .source-card.social-ig { border-color: var(--ig-pink); }
+  .source-card.social-ig .source-sessions { color: var(--ig-pink); }
+  .source-card.social-fb { border-color: var(--fb-blue); }
+  .source-card.social-fb .source-sessions { color: var(--fb-blue); }
+  .source-card.social-tt { border-color: var(--tt-black); }
+  .source-card.social-tt .source-sessions { color: var(--tt-black); }
+  .source-card.referral { border-color: var(--referral-orange); }
+  .source-card.referral .source-sessions { color: var(--referral-orange); }
+  .source-card.other { border-color: #999; }
+  .source-card.other .source-sessions { color: #999; }
+
+  /* Tables */
+  .table-section { padding: 0 32px 24px; }
+  .table-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .table-header h3 { font-size: 16px; color: var(--teal); display: flex; align-items: center; gap: 8px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--teal);
+    color: white;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    user-select: none;
+  }
+  thead th:hover { background: var(--teal-dark); }
+  tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.15s; }
+  tbody tr:hover { background: var(--surface); }
+  tbody td { padding: 10px 16px; }
+  .page-link { color: var(--teal); text-decoration: none; font-weight: 500; }
+  .page-link:hover { text-decoration: underline; }
+
+  /* Insights */
+  .insights-section { padding: 0 32px 32px; }
+  .insights-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--amber);
+  }
+  .insights-card h3 { font-size: 16px; color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .insight-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    gap: 10px;
+  }
+  .insight-item:last-child { border-bottom: none; }
+  .insight-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+  /* Export button */
+  .export-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--teal);
+    background: white;
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .export-btn:hover { background: var(--teal); color: white; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #999;
+  }
+  .footer a { color: var(--teal); text-decoration: none; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .charts-row, .charts-row.triple { grid-template-columns: 1fr; }
+    .source-grid { grid-template-columns: repeat(2, 1fr); }
+    .header { flex-direction: column; text-align: center; gap: 12px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div>
+    <h1><span class="icon">📊</span> Trusty Tails — Website Analytics</h1>
+    <div class="subtitle">Weekly traffic, sources, and content performance for www.trustytails.vet</div>
+  </div>
+  <div class="header-right">
+    <div class="nav-links">
+      <a href="/" title="Social Media Dashboard">📱 Social</a>
+      <a href="/analytics" class="active" title="Website Analytics">📊 Analytics</a>
+    </div>
+    <div class="updated" id="lastUpdated"></div>
+  </div>
+</div>
+
+<!-- Week Selector -->
+<div class="week-selector">
+  <label>📅 Viewing:</label>
+  <select id="weekSelect" onchange="selectWeek(this.value)"></select>
+  <span class="date-range" id="dateRange"></span>
+  <div style="flex:1"></div>
+  <button class="export-btn" onclick="exportCSV()">⬇ Export CSV</button>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Traffic Source Cards -->
+<div class="source-grid" id="sourceGrid"></div>
+
+<!-- Charts Row 1: Traffic Trend + Sources Doughnut -->
+<div class="charts-row triple">
+  <div class="chart-card">
+    <h3><span class="chart-icon">📈</span> Weekly Traffic Trend</h3>
+    <canvas id="trendChart" height="90"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3><span class="chart-icon">🎯</span> Traffic Sources</h3>
+    <canvas id="sourcesChart" height="180"></canvas>
+  </div>
+</div>
+
+<!-- Charts Row 2: Social Referrals -->
+<div class="charts-row">
+  <div class="chart-card">
+    <h3><span class="chart-icon">📲</span> Social Media → Website Sessions</h3>
+    <canvas id="socialChart" height="100"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3><span class="chart-icon">📝</span> Blog Post Views (All Time)</h3>
+    <canvas id="blogChart" height="100"></canvas>
+  </div>
+</div>
+
+<!-- Page Performance Table -->
+<div class="table-section">
+  <div class="table-card">
+    <div class="table-header">
+      <h3>📄 Page Performance (Selected Week)</h3>
+    </div>
+    <div style="overflow-x:auto;">
+      <table id="pageTable">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Views</th>
+            <th>Unique Views</th>
+            <th>Avg Time</th>
+            <th>Bounce Rate</th>
+          </tr>
+        </thead>
+        <tbody id="pageTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Weekly Insights -->
+<div class="insights-section">
+  <div class="insights-card">
+    <h3>💡 Weekly Insights & Recommendations</h3>
+    <div id="insightsContent"></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  🐾 Trusty Tails Veterinary Hospital — Website Analytics Dashboard<br>
+  GA4 Property: 527226879 · GTM: GTM-PHHQMLRQ · <a href="https://www.trustytails.vet" target="_blank">www.trustytails.vet</a>
+</div>
+
+<script>
+// ================================================================
+// DATA — Updated weekly by Claude during analytics review
+// Bump DATA_VERSION whenever WEEKLY_DATA changes to force refresh
+// ================================================================
+const DATA_VERSION = "2026-03-05-v1";
+
+const WEEKLY_DATA = [
+  {
+    week: "W1",
+    startDate: "2026-03-05",
+    endDate: "2026-03-11",
+    sessions: 0,
+    pageViews: 0,
+    uniqueVisitors: 0,
+    avgSessionDuration: "0:00",
+    bounceRate: 0,
+    sources: {
+      organic: 0,
+      direct: 0,
+      social_instagram: 0,
+      social_facebook: 0,
+      social_tiktok: 0,
+      referral: 0,
+      other: 0
+    },
+    pages: [
+      { path: "/", title: "Homepage", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog", title: "Blog Index", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/5-signs-pet-needs-er", title: "5 Signs Your Pet Needs the ER", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/kl-pet-vaccination-cheat-sheet", title: "KL Pet Vaccination Cheat Sheet", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/homemade-vs-store-bought-pet-food", title: "Homemade vs Store-Bought Pet Food", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/privacy", title: "Privacy Policy", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/terms", title: "Terms of Service", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 }
+    ],
+    insights: [
+      { icon: "📊", text: "Week 1 — Baseline. Analytics installed March 5, 2026. Data will begin populating over the coming days." },
+      { icon: "🔍", text: "Google Search Console verified with sitemap submitted (5 pages discovered). Indexing in progress." },
+      { icon: "📲", text: "Social media profiles (IG, FB, TikTok) are live and linking to www.trustytails.vet — monitor for first referral traffic." },
+      { icon: "🎯", text: "Next week: First real data pull. Focus on organic search baseline and social referral attribution." }
+    ]
+  }
+];
+
+// ================================================================
+// APP STATE
+// ================================================================
+let selectedWeekIdx = WEEKLY_DATA.length - 1; // default to latest
+let trendChart, sourcesChart, socialChart, blogChart;
+
+// ================================================================
+// INITIALIZATION
+// ================================================================
+function init() {
+  populateWeekSelector();
+  renderAll();
+}
+
+function populateWeekSelector() {
+  const sel = document.getElementById("weekSelect");
+  sel.innerHTML = WEEKLY_DATA.map((w, i) =>
+    `<option value="${i}" ${i === selectedWeekIdx ? 'selected' : ''}>${w.week}: ${w.startDate} → ${w.endDate}</option>`
+  ).join("");
+}
+
+function selectWeek(idx) {
+  selectedWeekIdx = parseInt(idx);
+  renderAll();
+}
+
+function renderAll() {
+  const w = WEEKLY_DATA[selectedWeekIdx];
+  const prev = selectedWeekIdx > 0 ? WEEKLY_DATA[selectedWeekIdx - 1] : null;
+
+  document.getElementById("lastUpdated").textContent = `Updated: ${w.endDate}`;
+  document.getElementById("dateRange").textContent = `${w.startDate} to ${w.endDate}`;
+
+  renderKPIs(w, prev);
+  renderSourceCards(w);
+  renderTrendChart();
+  renderSourcesChart(w);
+  renderSocialChart();
+  renderBlogChart();
+  renderPageTable(w);
+  renderInsights(w);
+}
+
+// ================================================================
+// KPI CARDS
+// ================================================================
+function renderKPIs(w, prev) {
+  const totalSocial = w.sources.social_instagram + w.sources.social_facebook + w.sources.social_tiktok;
+  const totalSources = w.sessions || 1;
+  const topSource = getTopSource(w);
+  const wowGrowth = prev && prev.sessions > 0 ? ((w.sessions - prev.sessions) / prev.sessions * 100).toFixed(1) : null;
+
+  const kpis = [
+    { label: "Sessions", value: w.sessions.toLocaleString(), delta: wowGrowth !== null ? `${wowGrowth > 0 ? '+' : ''}${wowGrowth}% WoW` : "—", cls: wowGrowth > 0 ? 'up' : wowGrowth < 0 ? 'down' : 'neutral' },
+    { label: "Page Views", value: w.pageViews.toLocaleString(), delta: "", cls: "neutral" },
+    { label: "Unique Visitors", value: w.uniqueVisitors.toLocaleString(), delta: "", cls: "neutral" },
+    { label: "Avg Duration", value: w.avgSessionDuration, delta: "", cls: "neutral" },
+    { label: "Bounce Rate", value: w.bounceRate + "%", delta: w.bounceRate > 70 ? "⚠ High" : w.bounceRate > 50 ? "Normal" : "✅ Good", cls: w.bounceRate > 70 ? 'down' : w.bounceRate > 0 ? 'up' : 'neutral' },
+    { label: "Top Source", value: topSource, delta: "", cls: "neutral" },
+    { label: "Social Sessions", value: totalSocial.toLocaleString(), delta: totalSources > 0 ? `${(totalSocial / totalSources * 100).toFixed(1)}% of total` : "—", cls: "neutral" }
+  ];
+
+  document.getElementById("kpiGrid").innerHTML = kpis.map(k =>
+    `<div class="kpi-card">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.value}</div>
+      <div class="kpi-delta ${k.cls}">${k.delta}</div>
+    </div>`
+  ).join("");
+}
+
+function getTopSource(w) {
+  const s = w.sources;
+  const entries = [
+    ["Organic", s.organic], ["Direct", s.direct], ["Instagram", s.social_instagram],
+    ["Facebook", s.social_facebook], ["TikTok", s.social_tiktok], ["Referral", s.referral], ["Other", s.other]
+  ];
+  entries.sort((a, b) => b[1] - a[1]);
+  return entries[0][1] > 0 ? entries[0][0] : "—";
+}
+
+// ================================================================
+// TRAFFIC SOURCE CARDS
+// ================================================================
+function renderSourceCards(w) {
+  const s = w.sources;
+  const total = w.sessions || 1;
+  const sources = [
+    { name: "Organic Search", cls: "organic", icon: "🔍", val: s.organic },
+    { name: "Direct", cls: "direct", icon: "🔗", val: s.direct },
+    { name: "Instagram", cls: "social-ig", icon: "📸", val: s.social_instagram },
+    { name: "Facebook", cls: "social-fb", icon: "👍", val: s.social_facebook },
+    { name: "TikTok", cls: "social-tt", icon: "🎵", val: s.social_tiktok },
+    { name: "Referral", cls: "referral", icon: "↩️", val: s.referral },
+    { name: "Other", cls: "other", icon: "📋", val: s.other }
+  ];
+
+  document.getElementById("sourceGrid").innerHTML = sources.map(src =>
+    `<div class="source-card ${src.cls}">
+      <div class="source-name">${src.icon} ${src.name}</div>
+      <div class="source-sessions">${src.val}</div>
+      <div class="source-pct">${w.sessions > 0 ? (src.val / total * 100).toFixed(1) + '%' : '—'}</div>
+    </div>`
+  ).join("");
+}
+
+// ================================================================
+// CHARTS
+// ================================================================
+function renderTrendChart() {
+  const ctx = document.getElementById("trendChart").getContext("2d");
+  if (trendChart) trendChart.destroy();
+
+  const labels = WEEKLY_DATA.map(w => w.week);
+  const totalData = WEEKLY_DATA.map(w => w.sessions);
+  const organicData = WEEKLY_DATA.map(w => w.sources.organic);
+  const socialData = WEEKLY_DATA.map(w => w.sources.social_instagram + w.sources.social_facebook + w.sources.social_tiktok);
+
+  trendChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        { label: "Total Sessions", data: totalData, borderColor: "#0D7377", backgroundColor: "rgba(13,115,119,0.1)", fill: true, tension: 0.3, borderWidth: 2 },
+        { label: "Organic", data: organicData, borderColor: "#34A853", backgroundColor: "transparent", tension: 0.3, borderWidth: 2, borderDash: [5, 5] },
+        { label: "Social", data: socialData, borderColor: "#E1306C", backgroundColor: "transparent", tension: 0.3, borderWidth: 2, borderDash: [3, 3] }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom", labels: { usePointStyle: true, padding: 16, font: { size: 11 } } } },
+      scales: { y: { beginAtZero: true, grid: { color: "#f0f0f0" } }, x: { grid: { display: false } } }
+    }
+  });
+}
+
+function renderSourcesChart(w) {
+  const ctx = document.getElementById("sourcesChart").getContext("2d");
+  if (sourcesChart) sourcesChart.destroy();
+
+  const s = w.sources;
+  const labels = ["Organic", "Direct", "Instagram", "Facebook", "TikTok", "Referral", "Other"];
+  const data = [s.organic, s.direct, s.social_instagram, s.social_facebook, s.social_tiktok, s.referral, s.other];
+  const colors = ["#34A853", "#7B61FF", "#E1306C", "#1877F2", "#010101", "#FF6D00", "#999"];
+
+  sourcesChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels,
+      datasets: [{ data, backgroundColor: colors, borderWidth: 2, borderColor: "#fff" }]
+    },
+    options: {
+      responsive: true,
+      cutout: "60%",
+      plugins: {
+        legend: { position: "bottom", labels: { usePointStyle: true, padding: 10, font: { size: 11 } } }
+      }
+    }
+  });
+}
+
+function renderSocialChart() {
+  const ctx = document.getElementById("socialChart").getContext("2d");
+  if (socialChart) socialChart.destroy();
+
+  const labels = WEEKLY_DATA.map(w => w.week);
+  const igData = WEEKLY_DATA.map(w => w.sources.social_instagram);
+  const fbData = WEEKLY_DATA.map(w => w.sources.social_facebook);
+  const ttData = WEEKLY_DATA.map(w => w.sources.social_tiktok);
+
+  socialChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        { label: "Instagram", data: igData, backgroundColor: "#E1306C", borderRadius: 4 },
+        { label: "Facebook", data: fbData, backgroundColor: "#1877F2", borderRadius: 4 },
+        { label: "TikTok", data: ttData, backgroundColor: "#010101", borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom", labels: { usePointStyle: true, padding: 16, font: { size: 11 } } } },
+      scales: {
+        y: { beginAtZero: true, stacked: true, grid: { color: "#f0f0f0" } },
+        x: { stacked: true, grid: { display: false } }
+      }
+    }
+  });
+}
+
+function renderBlogChart() {
+  const ctx = document.getElementById("blogChart").getContext("2d");
+  if (blogChart) blogChart.destroy();
+
+  // Aggregate blog views across all weeks
+  const blogMap = {};
+  WEEKLY_DATA.forEach(w => {
+    w.pages.filter(p => p.path.startsWith("/blog/") && p.path !== "/blog").forEach(p => {
+      blogMap[p.title] = (blogMap[p.title] || 0) + p.views;
+    });
+  });
+
+  const entries = Object.entries(blogMap).sort((a, b) => b[1] - a[1]);
+  const labels = entries.map(e => e[0].length > 30 ? e[0].substring(0, 30) + "…" : e[0]);
+  const data = entries.map(e => e[1]);
+
+  blogChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{ label: "Total Views", data, backgroundColor: "#E8A838", borderRadius: 4 }]
+    },
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { x: { beginAtZero: true, grid: { color: "#f0f0f0" } }, y: { grid: { display: false } } }
+    }
+  });
+}
+
+// ================================================================
+// PAGE TABLE
+// ================================================================
+function renderPageTable(w) {
+  const tbody = document.getElementById("pageTableBody");
+  const pages = [...w.pages].sort((a, b) => b.views - a.views);
+
+  tbody.innerHTML = pages.map(p =>
+    `<tr>
+      <td><a class="page-link" href="https://www.trustytails.vet${p.path}" target="_blank">${p.title}</a><br><span style="font-size:11px;color:#888;">${p.path}</span></td>
+      <td style="font-weight:700;">${p.views}</td>
+      <td>${p.uniqueViews}</td>
+      <td>${p.avgTime}</td>
+      <td>${p.bounceRate}%</td>
+    </tr>`
+  ).join("");
+}
+
+// ================================================================
+// INSIGHTS
+// ================================================================
+function renderInsights(w) {
+  document.getElementById("insightsContent").innerHTML = w.insights.map(i =>
+    `<div class="insight-item">
+      <span class="insight-icon">${i.icon}</span>
+      <span>${i.text}</span>
+    </div>`
+  ).join("");
+}
+
+// ================================================================
+// EXPORT CSV
+// ================================================================
+function exportCSV() {
+  const w = WEEKLY_DATA[selectedWeekIdx];
+  let csv = "Week,Start,End,Sessions,Page Views,Unique Visitors,Avg Duration,Bounce Rate,Organic,Direct,Instagram,Facebook,TikTok,Referral,Other\n";
+  WEEKLY_DATA.forEach(w => {
+    const s = w.sources;
+    csv += `${w.week},${w.startDate},${w.endDate},${w.sessions},${w.pageViews},${w.uniqueVisitors},${w.avgSessionDuration},${w.bounceRate}%,${s.organic},${s.direct},${s.social_instagram},${s.social_facebook},${s.social_tiktok},${s.referral},${s.other}\n`;
+  });
+  csv += "\nPage Performance (Selected: " + w.week + ")\n";
+  csv += "Page,Path,Views,Unique Views,Avg Time,Bounce Rate\n";
+  w.pages.forEach(p => {
+    csv += `"${p.title}",${p.path},${p.views},${p.uniqueViews},${p.avgTime},${p.bounceRate}%\n`;
+  });
+
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `trusty_tails_analytics_${w.week}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ================================================================
+// INIT
+// ================================================================
+init();
+</script>
+</body>
+</html>
