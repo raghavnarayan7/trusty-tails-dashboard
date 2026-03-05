@@ -2,6 +2,14 @@
   "rewrites": [
     { "source": "/analytics", "destination": "/analytics.html" }
   ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "analytics.trustytails.vet" }],
+      "destination": "https://analytics.trustytails.vet/analytics",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/slides/(.*)",
