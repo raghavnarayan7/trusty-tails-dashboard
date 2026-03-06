@@ -690,16 +690,19 @@ function renderRASummary() {
     const avgReach = (pp.reduce((s, p) => s + p.reach, 0) / n).toFixed(1);
     const avgSaves = (pp.reduce((s, p) => s + p.saves, 0) / n).toFixed(1);
     const totalReach = pp.reduce((s, p) => s + p.reach, 0);
+    const totalViews = pp.reduce((s, p) => s + (p.views || 0), 0);
     const totalEng_ = pp.reduce((s, p) => s + p.likes + p.comments + p.shares + p.saves, 0);
-    const avgEngRate = totalReach > 0 ? ((totalEng_ / totalReach) * 100).toFixed(1) + "%" : "—";
+    // TikTok doesn't report reach — use views as denominator instead
+    const engDenom = totalReach > 0 ? totalReach : totalViews;
+    const avgEngRate = engDenom > 0 ? ((totalEng_ / engDenom) * 100).toFixed(1) + "%" : "—";
     const followers = allPP.length > 0 ? allPP[allPP.length - 1].followers : 0;
 
     return `<div class="ra-summary-card">
       <h4><span class="${plat.cls}">${plat.icon} ${plat.name}</span> — 7-post avg</h4>
       <div class="ra-avg-row"><span class="ra-avg-label">Avg Views / Post</span><span class="ra-avg-value teal">${avgViews}</span></div>
       <div class="ra-avg-row"><span class="ra-avg-label">Avg Likes / Post</span><span class="ra-avg-value">${avgLikes}</span></div>
-      <div class="ra-avg-row"><span class="ra-avg-label">Avg Reach / Post</span><span class="ra-avg-value">${avgReach}</span></div>
-      <div class="ra-avg-row"><span class="ra-avg-label">Avg Eng. Rate</span><span class="ra-avg-value teal">${avgEngRate}</span></div>
+      <div class="ra-avg-row"><span class="ra-avg-label">Avg Reach / Post</span><span class="ra-avg-value">${totalReach > 0 ? avgReach : '—'}</span></div>
+      <div class="ra-avg-row"><span class="ra-avg-label">Avg Eng. Rate ${totalReach === 0 ? '(views)' : ''}</span><span class="ra-avg-value teal">${avgEngRate}</span></div>
       <div class="ra-avg-row"><span class="ra-avg-label">Followers</span><span class="ra-avg-value">${followers}</span></div>
     </div>`;
   }).join("");
