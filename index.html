@@ -677,9 +677,9 @@ function computeRollingAvg(values) {
 
 function renderRASummary() {
   const platforms = [
+    { name: "TikTok", cls: "tt-label", icon: "🎵" },
     { name: "Instagram", cls: "ig-label", icon: "📸" },
     { name: "Facebook", cls: "fb-label", icon: "👥" },
-    { name: "TikTok", cls: "tt-label", icon: "🎵" },
   ];
   document.getElementById("raSummaryGrid").innerHTML = platforms.map(plat => {
     const pp = getPostedPosts(plat.name);
@@ -705,7 +705,7 @@ function renderRASummary() {
 }
 
 function renderRADelta() {
-  const platforms = ["Instagram", "Facebook", "TikTok"];
+  const platforms = ["TikTok", "Instagram", "Facebook"];
   const rows = [];
   platforms.forEach(plat => {
     const pp = getPostedPosts(plat);
@@ -740,7 +740,7 @@ function renderRADelta() {
   });
 
   // Sort by day, then platform order
-  const platOrder = { "Instagram": 0, "Facebook": 1, "TikTok": 2 };
+  const platOrder = { "TikTok": 0, "Instagram": 1, "Facebook": 2 };
   rows.sort((a, b) => a.day - b.day || platOrder[a.platform] - platOrder[b.platform]);
 
   document.getElementById("raDeltaBody").innerHTML = rows.map(r => `
