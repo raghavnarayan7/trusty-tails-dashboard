@@ -296,8 +296,8 @@
 
 <!-- Rolling Average: Platform Summary Cards (ORDER 2) -->
 <div class="ra-section">
-  <div class="ra-section-title">Platform Rolling Averages</div>
-  <div class="ra-section-subtitle">Per-post averages across your most recent posts on each platform.</div>
+  <div class="ra-section-title">7-Post Rolling Averages</div>
+  <div class="ra-section-subtitle">Per-post averages across the last 7 posts on each platform.</div>
   <div class="ra-summary-grid" id="raSummaryGrid"></div>
 </div>
 
@@ -682,7 +682,8 @@ function renderRASummary() {
     { name: "Facebook", cls: "fb-label", icon: "👥" },
   ];
   document.getElementById("raSummaryGrid").innerHTML = platforms.map(plat => {
-    const pp = getPostedPosts(plat.name);
+    const allPP = getPostedPosts(plat.name);
+    const pp = allPP.slice(-7); // Last 7 posts only
     const n = pp.length || 1;
     const avgViews = (pp.reduce((s, p) => s + (p.views || 0), 0) / n).toFixed(1);
     const avgLikes = (pp.reduce((s, p) => s + p.likes, 0) / n).toFixed(1);
@@ -691,10 +692,10 @@ function renderRASummary() {
     const totalReach = pp.reduce((s, p) => s + p.reach, 0);
     const totalEng_ = pp.reduce((s, p) => s + p.likes + p.comments + p.shares + p.saves, 0);
     const avgEngRate = totalReach > 0 ? ((totalEng_ / totalReach) * 100).toFixed(1) + "%" : "—";
-    const followers = pp.length > 0 ? pp[pp.length - 1].followers : 0;
+    const followers = allPP.length > 0 ? allPP[allPP.length - 1].followers : 0;
 
     return `<div class="ra-summary-card">
-      <h4><span class="${plat.cls}">${plat.icon} ${plat.name}</span> — ${pp.length}-post avg</h4>
+      <h4><span class="${plat.cls}">${plat.icon} ${plat.name}</span> — 7-post avg</h4>
       <div class="ra-avg-row"><span class="ra-avg-label">Avg Views / Post</span><span class="ra-avg-value teal">${avgViews}</span></div>
       <div class="ra-avg-row"><span class="ra-avg-label">Avg Likes / Post</span><span class="ra-avg-value">${avgLikes}</span></div>
       <div class="ra-avg-row"><span class="ra-avg-label">Avg Reach / Post</span><span class="ra-avg-value">${avgReach}</span></div>
