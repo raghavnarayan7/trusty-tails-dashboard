@@ -513,7 +513,8 @@ function renderPlatformCards() {
     const saves = pp.reduce((s, p) => s + p.saves, 0);
     const views = pp.reduce((s, p) => s + (p.views || 0), 0);
     const reach = pp.reduce((s, p) => s + p.reach, 0);
-    const rate = reach > 0 ? (likes + comments + shares + saves) / reach : 0;
+    const denom = reach > 0 ? reach : views;
+    const rate = denom > 0 ? (likes + comments + shares + saves) / denom : 0;
     const cls = platformClass(plat);
     const icon = plat === "Instagram" ? "📸" : plat === "Facebook" ? "👥" : "🎵";
 
