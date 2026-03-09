@@ -425,6 +425,7 @@ const DEFAULT_POSTS = [
   // Day 10 — Ask Our Vet: Q&A (Mar 9)
   { day: 10, date: "Mar 9", platform: "Instagram", title: "Ask Our Vet: Q&A", format: "5-slide carousel + Reel", likes: 1, comments: 0, shares: 0, saves: 0, views: 53, reach: 35, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 41, reach 34. Carousel crosspost views 12, reach 1. Combined 53/35. (MBS Mar 9)" },
   { day: 10, date: "Mar 9", platform: "Facebook", title: "Ask Our Vet: Q&A", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Just posted Mar 9, metrics pending (MBS Mar 9)" },
+  { day: 10, date: "Mar 9", platform: "TikTok", title: "Ask Our Vet: Q&A", format: "5-slide carousel", likes: 10, comments: 0, shares: 0, saves: 0, views: 304, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "304 views, 10 likes. Posted 3:02pm. (TT Studio Mar 9)" },
 ];
 
 const CALENDAR = [
@@ -443,7 +444,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-09-v1";
+const DATA_VERSION = "2026-03-09-v2";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
