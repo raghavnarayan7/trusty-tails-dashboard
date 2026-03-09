@@ -269,7 +269,7 @@
       <a href="/" style="padding: 6px 16px; border-radius: 20px; background: rgba(255,255,255,0.2); color: white; font-size: 13px; text-decoration: none; font-weight: 600;">📱 Social</a>
       <a href="/analytics" style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); font-size: 13px; text-decoration: none;">📊 Analytics</a>
     </div>
-    <div class="updated" id="lastUpdated">Last updated: Mar 6, 2026, 10:00 AM MYT</div>
+    <div class="updated" id="lastUpdated">Last updated: Mar 9, 2026, 5:00 PM MYT</div>
     <div style="margin-top: 8px;">
       <button onclick="exportData()" style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: white; font-size: 12px; cursor: pointer;">Export CSV</button>
       <button onclick="saveData()" style="padding: 6px 16px; border-radius: 20px; border: none; background: var(--amber); color: white; font-size: 12px; cursor: pointer; margin-left: 4px; font-weight: 600;">💾 Save</button>
@@ -382,48 +382,52 @@
 // ── DATA STORE ──
 const DEFAULT_POSTS = [
   // Day 0 — Brand Launch (Feb 27-28)
-  { day: 0, date: "Feb 27", platform: "Instagram", title: "Brand Launch: We're Trusty Tails", format: "8-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 17, reach: 7, impressions: 0, followers: 24, url: "https://www.instagram.com/p/DVSALuiE8Vw/", notes: "Views 17, reach 7 (MBS Mar 8)" },
-  { day: 0, date: "Feb 27", platform: "Facebook", title: "Brand Launch: Text + Graphic", format: "Text + image", likes: 1, comments: 0, shares: 0, saves: 0, views: 69, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Branded graphic views 69, reach 3 (MBS Mar 8)" },
-  { day: 0, date: "Feb 28", platform: "Facebook", title: "Brand Launch: Carousel", format: "8-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 29, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid0NqMtFwJKqa1QSkwNdBj88aymBUNBuiw7K9yHo9YKNhkqw43w6MEmo7Upi9T6w278l", notes: "Views 29, reach 3 (MBS Mar 8)" },
-  { day: 0, date: "Feb 27", platform: "TikTok", title: "Brand Launch: Cover", format: "Photo post", likes: 3, comments: 0, shares: 0, saves: 0, views: 121, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7611715278094781704", notes: "121 views, 3 likes (TT Mar 8)" },
-  { day: 0, date: "Feb 28", platform: "TikTok", title: "Vet Care Reinvented", format: "Photo post", likes: 2, comments: 0, shares: 0, saves: 0, views: 127, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7611724062045392135", notes: "127 views, 2 likes (TT Mar 8)" },
+  { day: 0, date: "Feb 27", platform: "Instagram", title: "Brand Launch: We're Trusty Tails", format: "8-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 17, reach: 7, impressions: 0, followers: 21, url: "https://www.instagram.com/p/DVSALuiE8Vw/", notes: "Views 17, reach 7 (MBS Mar 9)" },
+  { day: 0, date: "Feb 27", platform: "Facebook", title: "Brand Launch: Text + Graphic", format: "Text + image", likes: 1, comments: 0, shares: 0, saves: 0, views: 69, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Branded graphic views 69, reach 3 (MBS Mar 9)" },
+  { day: 0, date: "Feb 28", platform: "Facebook", title: "Brand Launch: Carousel", format: "8-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 29, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid0NqMtFwJKqa1QSkwNdBj88aymBUNBuiw7K9yHo9YKNhkqw43w6MEmo7Upi9T6w278l", notes: "Views 29, reach 3 (MBS Mar 9)" },
+  { day: 0, date: "Feb 27", platform: "TikTok", title: "Brand Launch: Cover", format: "Photo post", likes: 3, comments: 0, shares: 0, saves: 0, views: 121, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7611715278094781704", notes: "121 views, 3 likes. Avg watch 2.44s, 13.9% full view. FYP 87.6% (TT Mar 9)" },
+  { day: 0, date: "Feb 28", platform: "TikTok", title: "Vet Care Reinvented", format: "Photo post", likes: 2, comments: 0, shares: 0, saves: 0, views: 127, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7611724062045392135", notes: "127 views, 2 likes. Avg watch 3.15s, 3.6% full view. FYP 86.4% (TT Mar 9)" },
   // Day 1 — Pet Parent Confessions (Feb 28)
-  { day: 1, date: "Feb 28", platform: "Instagram", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 27, reach: 8, impressions: 0, followers: 24, url: "https://www.instagram.com/p/DVSIiuQEx6C/", notes: "Views 27, reach 8 (MBS Mar 8)" },
-  { day: 1, date: "Feb 28", platform: "Facebook", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 30, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid06t2KkjRumLXNPBNfcqdyY4L59an8mND58Wys5AiYZes12qavFGomrs4QdGuSXXhHl", notes: "Views 30, reach 3 (MBS Mar 8)" },
-  { day: 1, date: "Feb 28", platform: "TikTok", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 16, comments: 0, shares: 0, saves: 0, views: 146, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7611731883709222151", notes: "146 views, 16 likes (TT Mar 8). Top TT engagement." },
+  { day: 1, date: "Feb 28", platform: "Instagram", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 27, reach: 8, impressions: 0, followers: 21, url: "https://www.instagram.com/p/DVSIiuQEx6C/", notes: "Views 27, reach 8 (MBS Mar 9)" },
+  { day: 1, date: "Feb 28", platform: "Facebook", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 30, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid06t2KkjRumLXNPBNfcqdyY4L59an8mND58Wys5AiYZes12qavFGomrs4QdGuSXXhHl", notes: "Views 30, reach 3 (MBS Mar 9)" },
+  { day: 1, date: "Feb 28", platform: "TikTok", title: "Pet Parent Confessions", format: "5-slide carousel", likes: 16, comments: 0, shares: 0, saves: 0, views: 146, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7611731883709222151", notes: "146 views, 16 likes. Avg watch 5.84s, 15.8% full view. FYP 90.1%. Top TT engagement rate. (TT Mar 9)" },
   // Day 2 — Cat Expression Translator (Mar 1)
-  { day: 2, date: "Mar 1", platform: "Instagram", title: "Cat Expression Translator", format: "6-slide carousel", likes: 3, comments: 1, shares: 0, saves: 0, views: 20, reach: 6, impressions: 0, followers: 24, url: "https://www.instagram.com/p/DVUlrr7k_Yy/", notes: "Views 20, reach 6, 3 likes, 1 comment (MBS Mar 8)" },
-  { day: 2, date: "Mar 1", platform: "Facebook", title: "Cat Expression Translator", format: "Photo post", likes: 1, comments: 0, shares: 0, saves: 0, views: 28, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 28, reach 3 (MBS Mar 8)" },
-  { day: 2, date: "Mar 1", platform: "TikTok", title: "Cat Expression Translator", format: "6-slide carousel", likes: 5, comments: 0, shares: 0, saves: 0, views: 127, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7612076616059014407", notes: "127 views, 5 likes (TT Mar 8)" },
+  { day: 2, date: "Mar 1", platform: "Instagram", title: "Cat Expression Translator", format: "6-slide carousel", likes: 3, comments: 1, shares: 0, saves: 0, views: 20, reach: 6, impressions: 0, followers: 21, url: "https://www.instagram.com/p/DVUlrr7k_Yy/", notes: "Views 20, reach 6, 3 likes, 1 comment (MBS Mar 9)" },
+  { day: 2, date: "Mar 1", platform: "Facebook", title: "Cat Expression Translator", format: "Photo post", likes: 1, comments: 0, shares: 0, saves: 0, views: 28, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 28, reach 3 (MBS Mar 9)" },
+  { day: 2, date: "Mar 1", platform: "TikTok", title: "Cat Expression Translator", format: "6-slide carousel", likes: 5, comments: 0, shares: 0, saves: 0, views: 127, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7612076616059014407", notes: "127 views, 5 likes. Avg watch 5.51s, 8.8% full view. FYP 89.1% (TT Mar 9)" },
   // Day 3 — Meet Kuching (Mar 2)
-  { day: 3, date: "Mar 2", platform: "Instagram", title: "Meet Kuching", format: "4-slide carousel", likes: 2, comments: 0, shares: 1, saves: 0, views: 11, reach: 5, impressions: 0, followers: 24, url: "https://www.instagram.com/trustytails.vet/", notes: "Views 11, reach 5, 2 likes, 1 share (MBS Mar 8)" },
-  { day: 3, date: "Mar 2", platform: "Facebook", title: "Meet Kuching", format: "4-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 52, reach: 3, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 52 (Reel 29 + Multi 23), reach 3 (MBS Mar 8)" },
-  { day: 3, date: "Mar 2", platform: "TikTok", title: "Meet Kuching", format: "4-slide carousel", likes: 3, comments: 0, shares: 0, saves: 0, views: 155, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7612473578612591880", notes: "155 views, 3 likes (TT Mar 8)" },
+  { day: 3, date: "Mar 2", platform: "Instagram", title: "Meet Kuching", format: "4-slide carousel", likes: 2, comments: 0, shares: 1, saves: 0, views: 11, reach: 5, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Views 11, reach 5, 2 likes, 1 share (MBS Mar 9)" },
+  { day: 3, date: "Mar 2", platform: "Facebook", title: "Meet Kuching", format: "4-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 53, reach: 6, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 53 (Reel 30 + Multi 23), reach 6 (MBS Mar 9)" },
+  { day: 3, date: "Mar 2", platform: "TikTok", title: "Meet Kuching", format: "4-slide carousel", likes: 3, comments: 0, shares: 0, saves: 0, views: 155, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7612473578612591880", notes: "155 views, 3 likes. Avg watch 2.96s, 7.1% full view. FYP 91.1% (TT Mar 9)" },
   // Day 4 — ER Decision Guide (Mar 3) — evening post ~5:30pm
-  { day: 4, date: "Mar 3", platform: "Instagram", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 20, comments: 1, shares: 0, saves: 0, views: 11, reach: 5, impressions: 0, followers: 24, url: "https://www.instagram.com/trustytails.vet/", notes: "Views 11, reach 5, 20 LIKES! Best IG engagement. (MBS Mar 8)" },
-  { day: 4, date: "Mar 3", platform: "Facebook", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 10, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Reach 2, views 10 (MBS Mar 8). Evening post." },
-  { day: 4, date: "Mar 3", platform: "TikTok", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 3, comments: 0, shares: 0, saves: 0, views: 98, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7612962238198058247", notes: "98 views, 3 likes (TT Mar 8)" },
+  { day: 4, date: "Mar 3", platform: "Instagram", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 20, comments: 0, shares: 0, saves: 0, views: 21, reach: 2, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Views 21, reach 2, 20 LIKES! Best IG engagement. (MBS Mar 9)" },
+  { day: 4, date: "Mar 3", platform: "Facebook", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 10, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Reach 2, views 10 (MBS Mar 9). Evening post." },
+  { day: 4, date: "Mar 3", platform: "TikTok", title: "ER or Morning Vet?", format: "7-slide carousel", likes: 3, comments: 0, shares: 0, saves: 0, views: 98, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7612962238198058247", notes: "98 views, 3 likes. Avg watch 6.91s, 7.4% full view. (TT Mar 9)" },
   // Day 5 — Holi & Pet Safety (Mar 4)
-  { day: 5, date: "Mar 4", platform: "Instagram", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 3, comments: 1, shares: 0, saves: 0, views: 11, reach: 5, impressions: 0, followers: 24, url: "https://www.instagram.com/p/DVcmJ1LE7SQ/", notes: "Views 11, reach 5, 3 likes, 1 comment (MBS Mar 8)" },
-  { day: 5, date: "Mar 4", platform: "Facebook", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 8, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid0Ny1QEJL42KrQuus4yLDW3yAoTHAj6YPSRNEh4vkKBVqfNKtpizG5V6ewnJq6eqSBl", notes: "Views 8, reach 2, 1 like (MBS Mar 8)" },
-  { day: 5, date: "Mar 4", platform: "TikTok", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 35, comments: 1, shares: 0, saves: 2, views: 1064, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7613233295265991954", notes: "1,064 views! 35 likes, 1 comment, 2 saves. VIRAL BREAKOUT (TT Mar 8)" },
+  { day: 5, date: "Mar 4", platform: "Instagram", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 4, comments: 0, shares: 0, saves: 0, views: 20, reach: 3, impressions: 0, followers: 21, url: "https://www.instagram.com/p/DVcmJ1LE7SQ/", notes: "Views 20, reach 3, 4 likes (MBS Mar 9)" },
+  { day: 5, date: "Mar 4", platform: "Facebook", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 8, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/posts/pfbid0Ny1QEJL42KrQuus4yLDW3yAoTHAj6YPSRNEh4vkKBVqfNKtpizG5V6ewnJq6eqSBl", notes: "Views 8, reach 2, 1 like (MBS Mar 9)" },
+  { day: 5, date: "Mar 4", platform: "TikTok", title: "Holi & Pet Safety", format: "5-slide carousel", likes: 35, comments: 1, shares: 1, saves: 2, views: 1065, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet/photo/7613233295265991954", notes: "1,065 views! 35 likes, 1 comment, 1 share, 2 saves. VIRAL BREAKOUT. Avg watch 2.08s, 1% full view. FYP 98%. 2 new followers. (TT Mar 9)" },
   // Day 6 — Vet Myth of the Week #1: Wellness Myths (Mar 5)
-  { day: 6, date: "Mar 5", platform: "Instagram", title: "Pet Wellness Myths", format: "6-slide carousel + Reel", likes: 1, comments: 1, shares: 0, saves: 0, views: 70, reach: 66, impressions: 0, followers: 24, url: "https://www.instagram.com/trustytails.vet/", notes: "Carousel views 7, reach 5, 1 like, 1 comment. Reel views 63, reach 61. Combined 70/66. (MBS Mar 8)" },
-  { day: 6, date: "Mar 5", platform: "Facebook", title: "Pet Wellness Myths", format: "6-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 12, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 12, reach 2, 1 like (MBS Mar 8)" },
-  { day: 6, date: "Mar 5", platform: "TikTok", title: "Pet Wellness Myths", format: "6-slide carousel", likes: 9, comments: 0, shares: 0, saves: 1, views: 457, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "457 views, 9 likes, 1 save. (TT Mar 8)" },
+  { day: 6, date: "Mar 5", platform: "Instagram", title: "Pet Wellness Myths", format: "6-slide carousel + Reel", likes: 1, comments: 0, shares: 0, saves: 0, views: 82, reach: 63, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 63, reach 61. Carousel views 19, reach 2. Combined 82/63. (MBS Mar 9)" },
+  { day: 6, date: "Mar 5", platform: "Facebook", title: "Pet Wellness Myths", format: "6-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 12, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 12, reach 2, 1 like (MBS Mar 9)" },
+  { day: 6, date: "Mar 5", platform: "TikTok", title: "Pet Wellness Myths", format: "6-slide carousel", likes: 9, comments: 0, shares: 0, saves: 1, views: 457, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "457 views, 9 likes, 1 save. (TT Mar 9)" },
   // Day 7 — Vet Myth of the Week #2: Gemuk = Healthy? (Mar 6)
-  { day: 7, date: "Mar 6", platform: "Instagram", title: "Vet Myth #2: Gemuk", format: "6-slide carousel + Reel", likes: 1, comments: 0, shares: 0, saves: 0, views: 11, reach: 5, impressions: 0, followers: 24, url: "https://www.instagram.com/trustytails.vet/", notes: "Carousel views 6, reach 3, 1 like. Reel views 5, reach 2. (MBS Mar 8)" },
-  { day: 7, date: "Mar 6", platform: "Facebook", title: "Vet Myth #2: Gemuk", format: "6-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 4, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 4, reach 2, 1 like (MBS Mar 8)" },
-  { day: 7, date: "Mar 6", platform: "TikTok", title: "Vet Myth #2: Gemuk", format: "6-slide carousel", likes: 19, comments: 0, shares: 0, saves: 0, views: 502, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "502 views, 19 likes! 2nd best TT post. (TT Mar 8)" },
+  { day: 7, date: "Mar 6", platform: "Instagram", title: "Vet Myth #2: Gemuk", format: "6-slide carousel + Reel", likes: 2, comments: 0, shares: 0, saves: 0, views: 16, reach: 5, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Carousel views 10, reach 2, 2 likes. Reel views 6, reach 3, 1 like. (MBS Mar 9)" },
+  { day: 7, date: "Mar 6", platform: "Facebook", title: "Vet Myth #2: Gemuk", format: "6-slide carousel", likes: 1, comments: 0, shares: 0, saves: 0, views: 4, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 4, reach 2, 1 like (MBS Mar 9)" },
+  { day: 7, date: "Mar 6", platform: "TikTok", title: "Vet Myth #2: Gemuk", format: "6-slide carousel", likes: 19, comments: 0, shares: 0, saves: 0, views: 502, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "502 views, 19 likes! 2nd best TT post. (TT Mar 9)" },
   // Day 8 — This or That: Pet Parent Edition (Mar 7)
-  { day: 8, date: "Mar 7", platform: "Instagram", title: "This or That: Pet Parent", format: "7-slide carousel", likes: 1, comments: 1, shares: 0, saves: 0, views: 6, reach: 4, impressions: 0, followers: 24, url: "https://www.instagram.com/trustytails.vet/", notes: "Views 6, reach 4, 1 like, 1 comment (MBS Mar 8)" },
-  { day: 8, date: "Mar 7", platform: "Facebook", title: "This or That: Pet Parent", format: "7-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 8, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 8, reach 2, 2 likes (MBS Mar 8)" },
-  { day: 8, date: "Mar 7", platform: "TikTok", title: "This or That: Pet Parent", format: "7-slide carousel", likes: 5, comments: 0, shares: 0, saves: 0, views: 299, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "299 views, 5 likes (TT Mar 8)" },
+  { day: 8, date: "Mar 7", platform: "Instagram", title: "This or That: Pet Parent", format: "7-slide carousel + Stories", likes: 3, comments: 0, shares: 0, saves: 0, views: 15, reach: 2, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Carousel views 15, reach 2, 3 likes. 4 stories (4 views each). (MBS Mar 9)" },
+  { day: 8, date: "Mar 7", platform: "Facebook", title: "This or That: Pet Parent", format: "7-slide carousel", likes: 2, comments: 0, shares: 0, saves: 0, views: 8, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 8, reach 2, 2 likes (MBS Mar 9)" },
+  { day: 8, date: "Mar 7", platform: "TikTok", title: "This or That: Pet Parent", format: "7-slide carousel", likes: 5, comments: 0, shares: 0, saves: 0, views: 299, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "299 views, 5 likes (TT Mar 9)" },
+  // Day 9 — Weekend Zoomies Explained (Mar 8) — IG + FB only
+  { day: 9, date: "Mar 8", platform: "Instagram", title: "Weekend Zoomies Explained", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Just posted Mar 8, metrics pending (MBS Mar 9)" },
+  { day: 9, date: "Mar 8", platform: "Facebook", title: "Weekend Zoomies Explained", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Just posted Mar 8, metrics pending (MBS Mar 9)" },
+  // Day 10 — Ask Our Vet: Q&A (Mar 9)
+  { day: 10, date: "Mar 9", platform: "Instagram", title: "Ask Our Vet: Q&A", format: "5-slide carousel + Reel", likes: 1, comments: 0, shares: 0, saves: 0, views: 53, reach: 35, impressions: 0, followers: 21, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 41, reach 34. Carousel crosspost views 12, reach 1. Combined 53/35. (MBS Mar 9)" },
+  { day: 10, date: "Mar 9", platform: "Facebook", title: "Ask Our Vet: Q&A", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Just posted Mar 9, metrics pending (MBS Mar 9)" },
 ];
 
 const CALENDAR = [
-  { day: 9, date: "Mar 8", title: "Weekend Zoomies Explained" },
-  { day: 10, date: "Mar 9", title: "Ask Our Vet: Q&A" },
   { day: 11, date: "Mar 10", title: "Vet Myth #3: Health Checklist" },
   { day: 12, date: "Mar 11", title: "Vet Visit Prep" },
   { day: 13, date: "Mar 12", title: "Spot the Signs: Pet Pain" },
@@ -439,7 +443,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-08-v1";
+const DATA_VERSION = "2026-03-09-v1";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
@@ -492,7 +496,7 @@ function renderKPIs() {
   const postedDays = new Set(posts.filter(p => totalEng(p) > 0).map(p => p.day)).size;
 
   const kpis = [
-    { label: "Total Posts", value: posts.filter(p => p.day <= 8).length, delta: posts.filter(p => p.day <= 8).length + " active" },
+    { label: "Total Posts", value: posts.filter(p => p.day <= 10).length, delta: posts.filter(p => p.day <= 10).length + " active" },
     { label: "Total Views", value: fmt(totalViews), delta: totalViews > 0 ? "across all platforms" : "Key metric for TikTok" },
     { label: "Total Likes", value: fmt(totalLikes), delta: activePosts.length ? "across " + activePosts.length + " posts" : "Enter metrics to see" },
     { label: "Total Comments", value: fmt(totalComments), delta: "" },
@@ -542,7 +546,7 @@ function renderPlatformCards() {
 function renderTable() {
   let filtered = currentFilter === "all" ? [...posts] : posts.filter(p => p.platform === currentFilter);
   // Only show posts up to day 1 + any future with data
-  filtered = filtered.filter(p => p.day <= 8 || totalEng(p) > 0);
+  filtered = filtered.filter(p => p.day <= 10 || totalEng(p) > 0);
 
   const tbody = document.getElementById("postTableBody");
   tbody.innerHTML = filtered.map((p, idx) => {
@@ -672,7 +676,7 @@ Chart.register(ChartDataLabels);
 
 function getPostedPosts(platform) {
   // Only return posts that have been posted (have views or engagement), for a specific platform
-  return posts.filter(p => p.platform === platform && p.day <= 8 && (p.views > 0 || totalEng(p) > 0));
+  return posts.filter(p => p.platform === platform && p.day <= 10 && (p.views > 0 || totalEng(p) > 0));
 }
 
 function computeRollingAvg(values) {
