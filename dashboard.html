@@ -269,7 +269,7 @@
       <a href="/" style="padding: 6px 16px; border-radius: 20px; background: rgba(255,255,255,0.2); color: white; font-size: 13px; text-decoration: none; font-weight: 600;">📱 Social</a>
       <a href="/analytics" style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); font-size: 13px; text-decoration: none;">📊 Analytics</a>
     </div>
-    <div class="updated" id="lastUpdated">Last updated: Mar 10, 2026, 3:00 PM MYT</div>
+    <div class="updated" id="lastUpdated">Last updated: Mar 11, 2026, 7:00 PM MYT</div>
     <div style="margin-top: 8px;">
       <button onclick="exportData()" style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: white; font-size: 12px; cursor: pointer;">Export CSV</button>
       <button onclick="saveData()" style="padding: 6px 16px; border-radius: 20px; border: none; background: var(--amber); color: white; font-size: 12px; cursor: pointer; margin-left: 4px; font-weight: 600;">💾 Save</button>
@@ -422,18 +422,21 @@ const DEFAULT_POSTS = [
   // Day 9 — Weekend Zoomies Explained (Mar 8) — IG + FB only (not visible in MBS content table Mar 10)
   { day: 9, date: "Mar 8", platform: "Instagram", title: "Weekend Zoomies Explained", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 20, url: "https://www.instagram.com/trustytails.vet/", notes: "Not visible in MBS content table (MBS Mar 10)" },
   { day: 9, date: "Mar 8", platform: "Facebook", title: "Weekend Zoomies Explained", format: "6-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Not visible in MBS content table (MBS Mar 10)" },
-  // Day 10 — Ask Our Vet: Q&A (Mar 9)
-  { day: 10, date: "Mar 9", platform: "Instagram", title: "Ask Our Vet: Q&A", format: "5-slide carousel + Reel", likes: 1, comments: 0, shares: 0, saves: 0, views: 69, reach: 58, impressions: 0, followers: 20, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 58, reach 53. Carousel views 11, reach 5, 1 like. Combined 69/58. (MBS Mar 10)" },
-  { day: 10, date: "Mar 9", platform: "Facebook", title: "Ask Our Vet: Q&A", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 2, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 2, reach 2 (MBS Mar 10)" },
-  { day: 10, date: "Mar 9", platform: "TikTok", title: "Ask Our Vet: Q&A", format: "5-slide carousel", likes: 13, comments: 0, shares: 0, saves: 0, views: 365, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "365 views, 13 likes. Posted 3:02pm. (TT Studio Mar 10)" },
-  // Day 11 — Vet Myth #3: Health Checklist (Mar 10) — just posted ~1:30pm
-  { day: 11, date: "Mar 10", platform: "Instagram", title: "Vet Myth #3: Health Checklist", format: "5-slide carousel + Reel", likes: 0, comments: 0, shares: 0, saves: 0, views: 2, reach: 0, impressions: 0, followers: 20, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 1, Carousel views 1. Just posted ~1:30pm. (MBS Mar 10)" },
-  { day: 11, date: "Mar 10", platform: "Facebook", title: "Vet Myth #3: Health Checklist", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Just posted ~1:30pm (MBS Mar 10)" },
-  { day: 11, date: "Mar 10", platform: "TikTok", title: "Vet Myth #3: Health Checklist", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 6, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "6 views, 0 likes. Just posted 1:26pm. (TT Studio Mar 10)" },
+  // Day 10 — Ask Our Vet: Q&A (Mar 9) — REFRESHED Mar 11
+  { day: 10, date: "Mar 9", platform: "Instagram", title: "Ask Our Vet: Q&A", format: "5-slide carousel + Reel", likes: 1, comments: 0, shares: 0, saves: 0, views: 71, reach: 60, impressions: 0, followers: 19, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 60, reach 55. Carousel views 11, reach 5, 1 like. Combined 71/60. (MBS Mar 11)" },
+  { day: 10, date: "Mar 9", platform: "Facebook", title: "Ask Our Vet: Q&A", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 2, reach: 2, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 2, reach 2 (MBS Mar 11)" },
+  { day: 10, date: "Mar 9", platform: "TikTok", title: "Ask Our Vet: Q&A", format: "5-slide carousel", likes: 13, comments: 0, shares: 0, saves: 0, views: 366, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "366 views, 13 likes. (TT Studio Mar 11)" },
+  // Day 11 — Vet Myth #3: Health Checklist (Mar 10) — REFRESHED Mar 11
+  { day: 11, date: "Mar 10", platform: "Instagram", title: "Vet Myth #3: Health Checklist", format: "5-slide carousel + Reel", likes: 0, comments: 0, shares: 0, saves: 0, views: 84, reach: 72, impressions: 0, followers: 19, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 78, reach 69. Carousel views 6, reach 3. Combined 84/72. (MBS Mar 11)" },
+  { day: 11, date: "Mar 10", platform: "Facebook", title: "Vet Myth #3: Health Checklist", format: "5-slide carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 1, reach: 1, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Views 1, reach 1 (MBS Mar 11)" },
+  { day: 11, date: "Mar 10", platform: "TikTok", title: "Vet Myth #3: Health Checklist", format: "5-slide carousel", likes: 28, comments: 0, shares: 0, saves: 0, views: 392, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "392 views, 28 likes! Strong TT engagement. (TT Studio Mar 11)" },
+  // Day 12 — Vet Visit Prep (Mar 11) — posted 11:24-27am as Reel + Carousel
+  { day: 12, date: "Mar 11", platform: "Instagram", title: "Vet Visit Prep", format: "5-slide carousel + Reel", likes: 0, comments: 0, shares: 0, saves: 0, views: 25, reach: 12, impressions: 0, followers: 19, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 16, reach 10. Carousel views 9, reach 2. Combined 25/12. (MBS Mar 11)" },
+  { day: 12, date: "Mar 11", platform: "Facebook", title: "Vet Visit Prep", format: "5-slide carousel + Reel", likes: 0, comments: 0, shares: 0, saves: 0, views: 101, reach: 99, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Reel views 98, reach 98! Multi views 3, reach 1. Combined 101/99. FB Reel breakthrough! (MBS Mar 11)" },
+  { day: 12, date: "Mar 11", platform: "TikTok", title: "Vet Visit Prep", format: "5-slide carousel", likes: 6, comments: 0, shares: 0, saves: 0, views: 298, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "298 views, 6 likes. (TT Studio Mar 11)" },
 ];
 
 const CALENDAR = [
-  { day: 12, date: "Mar 11", title: "Vet Visit Prep" },
   { day: 13, date: "Mar 12", title: "Spot the Signs: Pet Pain" },
   { day: 14, date: "Mar 13", title: "Pet Parent Red Flags (meme)" },
   { day: 15, date: "Mar 14", title: "Thank You, KL Pet Parents" },
@@ -447,7 +450,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-10-v1";
+const DATA_VERSION = "2026-03-11-v1";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
@@ -500,7 +503,7 @@ function renderKPIs() {
   const postedDays = new Set(posts.filter(p => totalEng(p) > 0).map(p => p.day)).size;
 
   const kpis = [
-    { label: "Total Posts", value: posts.filter(p => p.day <= 11).length, delta: posts.filter(p => p.day <= 11).length + " active" },
+    { label: "Total Posts", value: posts.filter(p => p.day <= 12).length, delta: posts.filter(p => p.day <= 12).length + " active" },
     { label: "Total Views", value: fmt(totalViews), delta: totalViews > 0 ? "across all platforms" : "Key metric for TikTok" },
     { label: "Total Likes", value: fmt(totalLikes), delta: activePosts.length ? "across " + activePosts.length + " posts" : "Enter metrics to see" },
     { label: "Total Comments", value: fmt(totalComments), delta: "" },
@@ -550,7 +553,7 @@ function renderPlatformCards() {
 function renderTable() {
   let filtered = currentFilter === "all" ? [...posts] : posts.filter(p => p.platform === currentFilter);
   // Only show posts up to day 1 + any future with data
-  filtered = filtered.filter(p => p.day <= 11 || totalEng(p) > 0);
+  filtered = filtered.filter(p => p.day <= 12 || totalEng(p) > 0);
 
   const tbody = document.getElementById("postTableBody");
   tbody.innerHTML = filtered.map((p, idx) => {
@@ -680,7 +683,7 @@ Chart.register(ChartDataLabels);
 
 function getPostedPosts(platform) {
   // Only return posts that have been posted (have views or engagement), for a specific platform
-  return posts.filter(p => p.platform === platform && p.day <= 11 && (p.views > 0 || totalEng(p) > 0));
+  return posts.filter(p => p.platform === platform && p.day <= 12 && (p.views > 0 || totalEng(p) > 0));
 }
 
 function computeRollingAvg(values) {
