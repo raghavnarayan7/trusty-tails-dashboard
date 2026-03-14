@@ -306,6 +306,32 @@
   </div>
 </div>
 
+<!-- GSC Search Performance -->
+<div class="kpi-grid" id="gscGrid" style="display:none;"></div>
+
+<!-- GSC Top Queries Table -->
+<div class="table-section" id="gscSection" style="display:none;">
+  <div class="table-card">
+    <div class="table-header">
+      <h3>🔍 Google Search Console — Top Queries</h3>
+    </div>
+    <div style="overflow-x:auto;">
+      <table id="gscTable">
+        <thead>
+          <tr>
+            <th>Query</th>
+            <th>Clicks</th>
+            <th>Impressions</th>
+            <th>CTR</th>
+            <th>Avg Position</th>
+          </tr>
+        </thead>
+        <tbody id="gscTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <!-- Page Performance Table -->
 <div class="table-section">
   <div class="table-card">
@@ -348,7 +374,7 @@
 // DATA — Updated weekly by Claude during analytics review
 // Bump DATA_VERSION whenever WEEKLY_DATA changes to force refresh
 // ================================================================
-const DATA_VERSION = "2026-03-05-v1";
+const DATA_VERSION = "2026-03-14-v1";
 
 const WEEKLY_DATA = [
   {
@@ -384,6 +410,73 @@ const WEEKLY_DATA = [
       { icon: "📲", text: "Social media profiles (IG, FB, TikTok) are live and linking to www.trustytails.vet — monitor for first referral traffic." },
       { icon: "🎯", text: "Next week: First real data pull. Focus on organic search baseline and social referral attribution." }
     ]
+  },
+  {
+    week: "W2",
+    startDate: "2026-03-07",
+    endDate: "2026-03-13",
+    sessions: 19,
+    pageViews: 21,
+    uniqueVisitors: 17,
+    avgSessionDuration: "0:15",
+    bounceRate: 63,
+    sources: {
+      organic: 3,
+      direct: 10,
+      social_instagram: 2,
+      social_facebook: 2,
+      social_tiktok: 1,
+      referral: 1,
+      other: 0
+    },
+    gsc: {
+      clicks: 2,
+      impressions: 118,
+      ctr: 1.7,
+      avgPosition: 9.5,
+      topQueries: [
+        { query: "gasing vet", clicks: 0, impressions: 12, ctr: 0, position: 5.3 },
+        { query: "gasing veterinary hospital", clicks: 0, impressions: 9, ctr: 0, position: 16.9 },
+        { query: "services offered by gasing veterinary hospital", clicks: 0, impressions: 7, ctr: 0, position: 5.9 },
+        { query: "gasing veterinary hospital reviews", clicks: 0, impressions: 6, ctr: 0, position: 10.7 },
+        { query: "24-hour emergency petaling jaya", clicks: 0, impressions: 6, ctr: 0, position: 42.5 },
+        { query: "gasing veterinary hospital 24 hours", clicks: 0, impressions: 5, ctr: 0, position: 4.4 },
+        { query: "gasing hospital", clicks: 0, impressions: 2, ctr: 0, position: 4.5 },
+        { query: "jalan gasing vet", clicks: 0, impressions: 1, ctr: 0, position: 6.0 },
+        { query: "vet jalan gasing", clicks: 0, impressions: 1, ctr: 0, position: 6.0 }
+      ],
+      countries: [
+        { country: "Malaysia", clicks: 2, impressions: 87 },
+        { country: "United States", clicks: 0, impressions: 8 },
+        { country: "Singapore", clicks: 0, impressions: 7 },
+        { country: "Hong Kong", clicks: 0, impressions: 4 },
+        { country: "India", clicks: 0, impressions: 4 },
+        { country: "United Kingdom", clicks: 0, impressions: 3 },
+        { country: "Indonesia", clicks: 0, impressions: 2 },
+        { country: "Australia", clicks: 0, impressions: 1 },
+        { country: "Japan", clicks: 0, impressions: 1 },
+        { country: "Canada", clicks: 0, impressions: 1 }
+      ],
+      devices: { mobile: { clicks: 1, impressions: 75 }, desktop: { clicks: 1, impressions: 41 }, tablet: { clicks: 0, impressions: 2 } }
+    },
+    pages: [
+      { path: "/", title: "Homepage", views: 20, uniqueViews: 17, avgTime: "0:17", bounceRate: 65 },
+      { path: "/privacy", title: "Privacy Policy", views: 1, uniqueViews: 1, avgTime: "0:05", bounceRate: 100 },
+      { path: "/blog", title: "Blog Index", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/5-signs-pet-needs-er", title: "5 Signs Your Pet Needs the ER", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/kl-pet-vaccination-cheat-sheet", title: "KL Pet Vaccination Cheat Sheet", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/homemade-vs-store-bought-pet-food", title: "Homemade vs Store-Bought Pet Food", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/terms", title: "Terms of Service", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 }
+    ],
+    insights: [
+      { icon: "🎉", text: "First real traffic week! 19 sessions from 17 unique visitors with 21 page views. The site is getting discovered." },
+      { icon: "🔍", text: "GSC: 118 impressions, 2 clicks (1.7% CTR), avg position 9.5. Top query: 'gasing vet' (12 impressions, position 5.3) — already ranking on page 1!" },
+      { icon: "🌍", text: "73.7% of search impressions from Malaysia (87/118). Also appearing in US (8), Singapore (7), Hong Kong (4), India (4)." },
+      { icon: "📱", text: "63.6% of search impressions on mobile (75/118) vs 34.7% desktop (41). Mobile-first design validated." },
+      { icon: "📲", text: "Social driving 26.3% of sessions (5/19): Instagram 2, Facebook 2, TikTok 1. Social→website funnel is working." },
+      { icon: "🏠", text: "Homepage captures 95% of views (20/21). Blog posts getting GSC impressions but not clicks yet — need stronger titles/meta descriptions." },
+      { icon: "🎯", text: "Next week: Optimize meta descriptions for top queries (especially '24-hour emergency petaling jaya' — position 42.5, needs work). Push blog content via social to drive clicks." }
+    ]
   }
 ];
 
@@ -417,11 +510,12 @@ function renderAll() {
   const w = WEEKLY_DATA[selectedWeekIdx];
   const prev = selectedWeekIdx > 0 ? WEEKLY_DATA[selectedWeekIdx - 1] : null;
 
-  document.getElementById("lastUpdated").textContent = `Updated: ${w.endDate}`;
+  document.getElementById("lastUpdated").textContent = `Updated: Mar 14, 2026, 5:00 PM MYT`;
   document.getElementById("dateRange").textContent = `${w.startDate} to ${w.endDate}`;
 
   renderKPIs(w, prev);
   renderSourceCards(w);
+  renderGSC(w);
   renderTrendChart();
   renderSourcesChart(w);
   renderSocialChart();
@@ -636,6 +730,52 @@ function renderInsights(w) {
       <span class="insight-icon">${i.icon}</span>
       <span>${i.text}</span>
     </div>`
+  ).join("");
+}
+
+// ================================================================
+// GSC (Google Search Console)
+// ================================================================
+function renderGSC(w) {
+  const gscGrid = document.getElementById("gscGrid");
+  const gscSection = document.getElementById("gscSection");
+
+  if (!w.gsc) {
+    gscGrid.style.display = "none";
+    gscSection.style.display = "none";
+    return;
+  }
+
+  gscGrid.style.display = "grid";
+  gscSection.style.display = "block";
+
+  const g = w.gsc;
+  const gscKpis = [
+    { label: "Search Clicks", value: g.clicks.toLocaleString(), delta: "", cls: "neutral" },
+    { label: "Impressions", value: g.impressions.toLocaleString(), delta: "", cls: "neutral" },
+    { label: "Avg CTR", value: g.ctr + "%", delta: g.ctr > 3 ? "Good" : g.ctr > 1 ? "Building" : "Low", cls: g.ctr > 3 ? "up" : "neutral" },
+    { label: "Avg Position", value: g.avgPosition.toFixed(1), delta: g.avgPosition <= 10 ? "Page 1!" : "Page " + Math.ceil(g.avgPosition / 10), cls: g.avgPosition <= 10 ? "up" : "neutral" }
+  ];
+
+  gscGrid.innerHTML = '<div style="grid-column: 1 / -1; padding: 0 0 4px; font-size: 14px; font-weight: 700; color: var(--teal);">🔍 Google Search Console</div>' +
+    gscKpis.map(k =>
+    `<div class="kpi-card">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.value}</div>
+      <div class="kpi-delta ${k.cls}">${k.delta}</div>
+    </div>`
+  ).join("");
+
+  // Render queries table
+  const tbody = document.getElementById("gscTableBody");
+  tbody.innerHTML = g.topQueries.map(q =>
+    `<tr>
+      <td style="font-weight:500;">${q.query}</td>
+      <td style="font-weight:700;">${q.clicks}</td>
+      <td>${q.impressions}</td>
+      <td>${q.ctr}%</td>
+      <td>${q.position.toFixed(1)}</td>
+    </tr>`
   ).join("");
 }
 
