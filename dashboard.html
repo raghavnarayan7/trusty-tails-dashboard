@@ -269,7 +269,7 @@
       <a href="/" style="padding: 6px 16px; border-radius: 20px; background: rgba(255,255,255,0.2); color: white; font-size: 13px; text-decoration: none; font-weight: 600;">📱 Social</a>
       <a href="/analytics" style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); font-size: 13px; text-decoration: none;">📊 Analytics</a>
     </div>
-    <div class="updated" id="lastUpdated">Last updated: Mar 11, 2026, 7:00 PM MYT</div>
+    <div class="updated" id="lastUpdated">Last updated: Mar 14, 2026, 4:00 PM MYT</div>
     <div style="margin-top: 8px;">
       <button onclick="exportData()" style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: white; font-size: 12px; cursor: pointer;">Export CSV</button>
       <button onclick="saveData()" style="padding: 6px 16px; border-radius: 20px; border: none; background: var(--amber); color: white; font-size: 12px; cursor: pointer; margin-left: 4px; font-weight: 600;">💾 Save</button>
@@ -434,12 +434,19 @@ const DEFAULT_POSTS = [
   { day: 12, date: "Mar 11", platform: "Instagram", title: "Vet Visit Prep", format: "5-slide carousel + Reel", likes: 0, comments: 0, shares: 0, saves: 0, views: 25, reach: 12, impressions: 0, followers: 19, url: "https://www.instagram.com/trustytails.vet/", notes: "Reel views 16, reach 10. Carousel views 9, reach 2. Combined 25/12. (MBS Mar 11)" },
   { day: 12, date: "Mar 11", platform: "Facebook", title: "Vet Visit Prep", format: "5-slide carousel + Reel", likes: 0, comments: 0, shares: 0, saves: 0, views: 101, reach: 99, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Reel views 98, reach 98! Multi views 3, reach 1. Combined 101/99. FB Reel breakthrough! (MBS Mar 11)" },
   { day: 12, date: "Mar 11", platform: "TikTok", title: "Vet Visit Prep", format: "5-slide carousel", likes: 6, comments: 0, shares: 0, saves: 0, views: 298, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "298 views, 6 likes. (TT Studio Mar 11)" },
+  // Day 13 — Spot the Signs: Pet Pain (Mar 12)
+  { day: 13, date: "Mar 12", platform: "Instagram", title: "Spot the Signs: Pet Pain", format: "Infographic carousel + Reel", likes: 0, comments: 1, shares: 0, saves: 0, views: 4, reach: 2, impressions: 0, followers: 19, url: "https://www.instagram.com/trustytails.vet/", notes: "Carousel views 4, reach 2, 1 comment. (MBS Mar 14)" },
+  { day: 13, date: "Mar 12", platform: "Facebook", title: "Spot the Signs: Pet Pain", format: "Infographic carousel + Reel", likes: 1, comments: 0, shares: 0, saves: 0, views: 100, reach: 97, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Reel 100 views, reach 97! Carousel 3 views, reach 1. FB Reel best performer again! (MBS Mar 14)" },
+  { day: 13, date: "Mar 12", platform: "TikTok", title: "Spot the Signs: Pet Pain", format: "Carousel + Reel", likes: 6, comments: 0, shares: 0, saves: 0, views: 392, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "Reel 392 views (7-day). Carousel 344 views (7-day). Combined TT strongest performer. (TT Studio Mar 14)" },
+  // Day 14 — Pet Parent Red Flags (Mar 13)
+  { day: 14, date: "Mar 13", platform: "Instagram", title: "Pet Parent Red Flags (meme)", format: "Meme carousel + Reel", likes: 0, comments: 0, shares: 0, saves: 0, views: 7, reach: 1, impressions: 0, followers: 19, url: "https://www.instagram.com/trustytails.vet/", notes: "Carousel 7 views, reach 1. Reel 17 views, reach 17. Combined. (MBS Mar 14)" },
+  { day: 14, date: "Mar 13", platform: "Facebook", title: "Pet Parent Red Flags (meme)", format: "Meme carousel + Reel", likes: 2, comments: 0, shares: 0, saves: 0, views: 78, reach: 74, impressions: 0, followers: 2, url: "https://www.facebook.com/TrustyTails.Vet/", notes: "Reel 78 views, reach 74, 2 likes. Carousel 1 view. FB Reels continue strong. (MBS Mar 14)" },
+  { day: 14, date: "Mar 13", platform: "TikTok", title: "Pet Parent Red Flags (meme)", format: "Meme carousel", likes: 0, comments: 0, shares: 0, saves: 0, views: 0, reach: 0, impressions: 0, followers: 4, url: "https://www.tiktok.com/@trustytails.vet", notes: "Not yet in TT 7-day top posts. Check next pull. (TT Studio Mar 14)" },
 ];
 
 const CALENDAR = [
-  { day: 13, date: "Mar 12", title: "Spot the Signs: Pet Pain" },
-  { day: 14, date: "Mar 13", title: "Pet Parent Red Flags (meme)" },
-  { day: 15, date: "Mar 14", title: "Thank You, KL Pet Parents" },
+  { day: 15, date: "Mar 14", title: "Ramadan & Pets: Routines" },
+  { day: 16, date: "Mar 15", title: "Kuching's Weekend" },
 ];
 
 // Expand calendar into placeholder posts
