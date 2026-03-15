@@ -533,7 +533,7 @@ function renderKPIs() {
 }
 
 function renderPlatformCards() {
-  const platforms = ["Instagram", "Facebook", "TikTok"];
+  const platforms = ["TikTok", "Instagram", "Facebook"];
   document.getElementById("platformGrid").innerHTML = platforms.map(plat => {
     const pp = posts.filter(p => p.platform === plat);
     const likes = pp.reduce((s, p) => s + p.likes, 0);
@@ -748,8 +748,8 @@ function renderRADelta() {
       const priorLikes = i > 0 ? pp.slice(0, i).reduce((s, q) => s + q.likes, 0) / i : null;
       const cls = plat === "Instagram" ? "ig" : plat === "Facebook" ? "fb" : "tt";
 
-      // Check if just posted (Day 7 with 0 views on IG/FB, or very few)
-      const justPosted = p.day === 7 && p.views <= 4;
+      // Check if just posted (latest post with very few views)
+      const justPosted = p.views <= 4 && p === pp[pp.length - 1];
 
       function deltaBadge(actual, avg) {
         if (justPosted) return '<span class="delta-badge new">Just posted</span>';
