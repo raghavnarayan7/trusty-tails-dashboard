@@ -471,7 +471,7 @@ CALENDAR.forEach(c => {
 });
 
 // Load saved data or use defaults — version bump forces refresh when defaults change
-const DATA_VERSION = "2026-03-18-v2";
+const DATA_VERSION = "2026-03-18-v3";
 const savedVersion = localStorage.getItem("tt_data_version");
 let posts;
 if (savedVersion !== DATA_VERSION) {
@@ -543,7 +543,8 @@ function renderKPIs() {
 }
 
 function renderPlatformCards() {
-  const platforms = ["Instagram", "Facebook", "TikTok"];
+  // STANDING RULE: Platform order is ALWAYS TikTok → Instagram → Facebook (strongest first). Same order in cards, summary, charts, table.
+  const platforms = ["TikTok", "Instagram", "Facebook"];
   document.getElementById("platformGrid").innerHTML = platforms.map(plat => {
     const pp = posts.filter(p => p.platform === plat);
     const likes = pp.reduce((s, p) => s + p.likes, 0);
