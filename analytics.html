@@ -332,6 +332,33 @@
   </div>
 </div>
 
+<!-- AI Traffic (AEO) Section -->
+<div class="kpi-grid" id="aiTrafficGrid" style="display:none;"></div>
+<div class="table-section" id="aiTrafficSection" style="display:none;">
+  <div class="table-card">
+    <div class="table-header">
+      <h3>🤖 AI Engine Traffic — AEO Performance</h3>
+    </div>
+    <div style="overflow-x:auto;">
+      <table id="aiTrafficTable">
+        <thead>
+          <tr>
+            <th>AI Engine</th>
+            <th>Sessions</th>
+            <th>Page Views</th>
+            <th>Avg Session Duration</th>
+            <th>Pages / Session</th>
+          </tr>
+        </thead>
+        <tbody id="aiTrafficTableBody"></tbody>
+      </table>
+    </div>
+    <div style="padding: 12px 16px; font-size: 12px; color: #888; border-top: 1px solid #eee;">
+      💡 AI referral tracking deployed Mar 30, 2026. Tracks visitors arriving from ChatGPT, Claude, Gemini, Perplexity, Copilot, YouChat, and Poe via <code>ai_referral</code> dataLayer events.
+    </div>
+  </div>
+</div>
+
 <!-- Page Performance Table -->
 <div class="table-section">
   <div class="table-card">
@@ -459,6 +486,16 @@ const WEEKLY_DATA = [
       ],
       devices: { mobile: { clicks: 1, impressions: 75 }, desktop: { clicks: 1, impressions: 41 }, tablet: { clicks: 0, impressions: 2 } }
     },
+    aiTraffic: {
+      sources: [
+        { engine: "ChatGPT", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Claude", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Gemini", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Perplexity", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Copilot", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Other AI", sessions: 0, pageViews: 0, avgDuration: "—" }
+      ]
+    },
     pages: [
       { path: "/", title: "Homepage", views: 20, uniqueViews: 17, avgTime: "0:17", bounceRate: 65 },
       { path: "/privacy", title: "Privacy Policy", views: 1, uniqueViews: 1, avgTime: "0:05", bounceRate: 100 },
@@ -522,6 +559,7 @@ function renderAll() {
   renderKPIs(w, prev);
   renderSourceCards(w);
   renderGSC(w);
+  renderAITraffic(w);
   renderTrendChart();
   renderSourcesChart(w);
   renderSocialChart();
@@ -781,6 +819,57 @@ function renderGSC(w) {
       <td>${q.impressions}</td>
       <td>${q.ctr}%</td>
       <td>${q.position.toFixed(1)}</td>
+    </tr>`
+  ).join("");
+}
+
+// ================================================================
+// AI TRAFFIC (AEO)
+// ================================================================
+function renderAITraffic(w) {
+  const grid = document.getElementById("aiTrafficGrid");
+  const section = document.getElementById("aiTrafficSection");
+
+  if (!w.aiTraffic) {
+    grid.style.display = "none";
+    section.style.display = "none";
+    return;
+  }
+
+  grid.style.display = "grid";
+  section.style.display = "block";
+
+  const ai = w.aiTraffic;
+  const totalSessions = ai.sources.reduce((sum, s) => sum + s.sessions, 0);
+  const totalPageViews = ai.sources.reduce((sum, s) => sum + s.pageViews, 0);
+  const avgPagesPerSession = totalSessions > 0 ? (totalPageViews / totalSessions).toFixed(1) : "0.0";
+  const shareOfTraffic = w.sessions > 0 ? ((totalSessions / w.sessions) * 100).toFixed(1) : "0.0";
+
+  const aiKpis = [
+    { label: "AI Sessions", value: totalSessions.toLocaleString(), delta: totalSessions > 0 ? "🟢 Active" : "⏳ Waiting", cls: totalSessions > 0 ? "up" : "neutral" },
+    { label: "AI Page Views", value: totalPageViews.toLocaleString(), delta: "", cls: "neutral" },
+    { label: "AI Share of Traffic", value: shareOfTraffic + "%", delta: shareOfTraffic > 5 ? "Growing!" : "Early stage", cls: shareOfTraffic > 5 ? "up" : "neutral" },
+    { label: "Pages / AI Session", value: avgPagesPerSession, delta: avgPagesPerSession > 2 ? "High engagement" : "", cls: avgPagesPerSession > 2 ? "up" : "neutral" }
+  ];
+
+  grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 0 0 4px; font-size: 14px; font-weight: 700; color: var(--teal);">🤖 AI Engine Traffic (AEO)</div>' +
+    aiKpis.map(k =>
+    `<div class="kpi-card">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.value}</div>
+      <div class="kpi-delta ${k.cls}">${k.delta}</div>
+    </div>`
+  ).join("");
+
+  // Render sources table
+  const tbody = document.getElementById("aiTrafficTableBody");
+  tbody.innerHTML = ai.sources.map(s =>
+    `<tr>
+      <td style="font-weight:500;">${s.engine}</td>
+      <td style="font-weight:700;">${s.sessions}</td>
+      <td>${s.pageViews}</td>
+      <td>${s.avgDuration || "—"}</td>
+      <td>${s.sessions > 0 ? (s.pageViews / s.sessions).toFixed(1) : "—"}</td>
     </tr>`
   ).join("");
 }
