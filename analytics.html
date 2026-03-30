@@ -510,7 +510,13 @@ function renderAll() {
   const w = WEEKLY_DATA[selectedWeekIdx];
   const prev = selectedWeekIdx > 0 ? WEEKLY_DATA[selectedWeekIdx - 1] : null;
 
-  document.getElementById("lastUpdated").textContent = `Updated: Mar 14, 2026, 5:00 PM MYT`;
+  // Auto-derive "Updated" from DATA_VERSION (format: "YYYY-MM-DD-vN")
+  const dvParts = DATA_VERSION.split("-");
+  if (dvParts.length >= 3) {
+    const dvDate = new Date(dvParts[0], parseInt(dvParts[1]) - 1, parseInt(dvParts[2]));
+    const dvFormatted = dvDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    document.getElementById("lastUpdated").textContent = "Updated: " + dvFormatted;
+  }
   document.getElementById("dateRange").textContent = `${w.startDate} to ${w.endDate}`;
 
   renderKPIs(w, prev);
