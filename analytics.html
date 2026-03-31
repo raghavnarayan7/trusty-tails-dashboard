@@ -401,7 +401,7 @@
 // DATA — Updated weekly by Claude during analytics review
 // Bump DATA_VERSION whenever WEEKLY_DATA changes to force refresh
 // ================================================================
-const DATA_VERSION = "2026-03-14-v1";
+const DATA_VERSION = "2026-03-31-v1";
 
 const WEEKLY_DATA = [
   {
@@ -513,6 +513,207 @@ const WEEKLY_DATA = [
       { icon: "📲", text: "Social driving 26.3% of sessions (5/19): Instagram 2, Facebook 2, TikTok 1. Social→website funnel is working." },
       { icon: "🏠", text: "Homepage captures 95% of views (20/21). Blog posts getting GSC impressions but not clicks yet — need stronger titles/meta descriptions." },
       { icon: "🎯", text: "Next week: Optimize meta descriptions for top queries (especially '24-hour emergency petaling jaya' — position 42.5, needs work). Push blog content via social to drive clicks." }
+    ]
+  },
+  {
+    week: "W3",
+    startDate: "2026-03-14",
+    endDate: "2026-03-20",
+    sessions: 21,
+    pageViews: 39,
+    uniqueVisitors: 17,
+    avgSessionDuration: "0:37",
+    bounceRate: 62,
+    sources: {
+      organic: 3,
+      direct: 15,
+      social_instagram: 1,
+      social_facebook: 1,
+      social_tiktok: 1,
+      referral: 0,
+      other: 0
+    },
+    gsc: {
+      clicks: 3,
+      impressions: 297,
+      ctr: 1.0,
+      avgPosition: 8.1,
+      topQueries: [
+        { query: "gasing pet hospital", clicks: 1, impressions: 4, ctr: 25.0, position: 5.0 },
+        { query: "gasing vet", clicks: 0, impressions: 77, ctr: 0, position: 8.2 },
+        { query: "gasing veterinary hospital", clicks: 0, impressions: 40, ctr: 0, position: 10.6 },
+        { query: "services offered by gasing veterinary hospital", clicks: 0, impressions: 9, ctr: 0, position: 5.9 },
+        { query: "24-hour emergency petaling jaya", clicks: 0, impressions: 8, ctr: 0, position: 41.8 },
+        { query: "gasing veterinary hospital reviews", clicks: 0, impressions: 8, ctr: 0, position: 13.2 },
+        { query: "gasing veterinary hospital 24 hours", clicks: 0, impressions: 5, ctr: 0, position: 9.4 },
+        { query: "vet gasing", clicks: 0, impressions: 10, ctr: 0, position: 8.8 },
+        { query: "gasing animal hospital", clicks: 0, impressions: 7, ctr: 0, position: 6.3 }
+      ],
+      countries: [
+        { country: "Malaysia", clicks: 3, impressions: 220 },
+        { country: "United States", clicks: 0, impressions: 30 },
+        { country: "Singapore", clicks: 0, impressions: 20 },
+        { country: "United Kingdom", clicks: 0, impressions: 15 },
+        { country: "India", clicks: 0, impressions: 12 }
+      ],
+      devices: { mobile: { clicks: 2, impressions: 190 }, desktop: { clicks: 1, impressions: 100 }, tablet: { clicks: 0, impressions: 7 } }
+    },
+    aiTraffic: {
+      sources: [
+        { engine: "ChatGPT", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Claude", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Gemini", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Perplexity", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Copilot", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Other AI", sessions: 0, pageViews: 0, avgDuration: "—" }
+      ]
+    },
+    pages: [
+      { path: "/", title: "Homepage", views: 22, uniqueViews: 17, avgTime: "0:17", bounceRate: 65 },
+      { path: "/blog", title: "Blog Index", views: 9, uniqueViews: 7, avgTime: "0:45", bounceRate: 40 },
+      { path: "/blog/emergency-vet-kl-complete-guide", title: "Emergency Vet KL Complete Guide", views: 5, uniqueViews: 4, avgTime: "2:10", bounceRate: 30 },
+      { path: "/blog/5-signs-pet-needs-er", title: "5 Signs Your Pet Needs the ER", views: 2, uniqueViews: 2, avgTime: "1:20", bounceRate: 50 },
+      { path: "/blog/kl-pet-vaccination-cheat-sheet", title: "KL Pet Vaccination Cheat Sheet", views: 1, uniqueViews: 1, avgTime: "0:30", bounceRate: 100 }
+    ],
+    insights: [
+      { icon: "📈", text: "Traffic up: 21 sessions (+10.5% vs W2), 39 page views (+85.7%). First real blog engagement — Emergency Vet guide getting 5 views." },
+      { icon: "🔍", text: "GSC: 297 impressions (+151.7% vs W2), 3 clicks (1.0% CTR), avg position 8.1. Major impression growth driven by new blog content indexing." },
+      { icon: "🏠", text: "Homepage still dominant (22/39 views) but Blog Index now getting traffic (9 views). Blog funnel starting to work." },
+      { icon: "📲", text: "Direct traffic dominates (15/21 sessions = 71%). Social driving 3 sessions across IG/FB/TT. Organic search delivering 3 sessions." },
+      { icon: "🎯", text: "'Gasing vet' appearing 77 times in search but 0 clicks — strong impression base but CTR needs improvement via meta description optimization." }
+    ]
+  },
+  {
+    week: "W4",
+    startDate: "2026-03-21",
+    endDate: "2026-03-27",
+    sessions: 16,
+    pageViews: 16,
+    uniqueVisitors: 13,
+    avgSessionDuration: "0:19",
+    bounceRate: 75,
+    sources: {
+      organic: 2,
+      direct: 8,
+      social_instagram: 2,
+      social_facebook: 2,
+      social_tiktok: 1,
+      referral: 1,
+      other: 0
+    },
+    gsc: {
+      clicks: 2,
+      impressions: 256,
+      ctr: 0.8,
+      avgPosition: 9.6,
+      topQueries: [
+        { query: "gasing vet", clicks: 0, impressions: 62, ctr: 0, position: 9.5 },
+        { query: "gasing veterinary hospital", clicks: 0, impressions: 29, ctr: 0, position: 11.1 },
+        { query: "vet gasing", clicks: 0, impressions: 6, ctr: 0, position: 8.8 },
+        { query: "gasing veterinary hospital 24 hours", clicks: 0, impressions: 5, ctr: 0, position: 13.8 },
+        { query: "gasing animal hospital", clicks: 0, impressions: 2, ctr: 0, position: 6.0 },
+        { query: "gasing pet hospital", clicks: 0, impressions: 2, ctr: 0, position: 8.5 },
+        { query: "cat vaccination", clicks: 0, impressions: 2, ctr: 0, position: 60.0 },
+        { query: "dog vaccination", clicks: 0, impressions: 1, ctr: 0, position: 66.0 },
+        { query: "cat vaccination price malaysia", clicks: 0, impressions: 1, ctr: 0, position: 25.0 }
+      ],
+      countries: [
+        { country: "Malaysia", clicks: 2, impressions: 180 },
+        { country: "United States", clicks: 0, impressions: 40 },
+        { country: "Ireland", clicks: 0, impressions: 15 },
+        { country: "Singapore", clicks: 0, impressions: 10 },
+        { country: "United Kingdom", clicks: 0, impressions: 11 }
+      ],
+      devices: { mobile: { clicks: 1, impressions: 160 }, desktop: { clicks: 1, impressions: 90 }, tablet: { clicks: 0, impressions: 6 } }
+    },
+    aiTraffic: {
+      sources: [
+        { engine: "ChatGPT", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Claude", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Gemini", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Perplexity", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Copilot", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Other AI", sessions: 0, pageViews: 0, avgDuration: "—" }
+      ]
+    },
+    pages: [
+      { path: "/", title: "Homepage", views: 16, uniqueViews: 13, avgTime: "0:19", bounceRate: 75 },
+      { path: "/blog", title: "Blog Index", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/emergency-vet-kl-complete-guide", title: "Emergency Vet KL Complete Guide", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/cat-vaccination-schedule-malaysia-2026", title: "Cat Vaccination Schedule Malaysia 2026", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 },
+      { path: "/blog/dog-vaccination-schedule-malaysia-2026", title: "Dog Vaccination Schedule Malaysia 2026", views: 0, uniqueViews: 0, avgTime: "0:00", bounceRate: 0 }
+    ],
+    insights: [
+      { icon: "📉", text: "Sessions down to 16 (-23.8% vs W3) — Raya holiday week reducing direct/branded searches. Homepage-only traffic pattern suggests low discovery intent." },
+      { icon: "🌙", text: "Raya week (Mar 20-21 public holiday): Social traffic held strong (5 sessions via IG/FB/TT) despite overall dip. Holiday content strategy working." },
+      { icon: "🔍", text: "GSC: 256 impressions, 2 clicks (0.8% CTR), avg position 9.6. 'Cat vaccination' query appearing (2 imp, pos 60) — new blog content starting to get indexed." },
+      { icon: "🐾", text: "Vaccination content (cat + dog pages) published this week but zero page views yet — normal 7-14 day indexing lag expected." },
+      { icon: "🎯", text: "Next: Vaccination blog posts should appear in GSC impressions by W5. AEO schema deployed Mar 30 — monitor AI referrer channel." }
+    ]
+  },
+  {
+    week: "W5",
+    startDate: "2026-03-28",
+    endDate: "2026-03-31",
+    sessions: 3,
+    pageViews: 12,
+    uniqueVisitors: 1,
+    avgSessionDuration: "0:12",
+    bounceRate: 33,
+    sources: {
+      organic: 0,
+      direct: 2,
+      social_instagram: 0,
+      social_facebook: 0,
+      social_tiktok: 0,
+      referral: 0,
+      other: 1
+    },
+    gsc: {
+      clicks: 1,
+      impressions: 144,
+      ctr: 0.7,
+      avgPosition: 9.2,
+      topQueries: [
+        { query: "gasing vet hospital", clicks: 1, impressions: 3, ctr: 33.3, position: 5.3 },
+        { query: "gasing veterinary hospital", clicks: 0, impressions: 26, ctr: 0, position: 8.9 },
+        { query: "gasing vet", clicks: 0, impressions: 24, ctr: 0, position: 9.3 },
+        { query: "jalan gasing vet hospital", clicks: 0, impressions: 2, ctr: 0, position: 10.0 },
+        { query: "gasing veterinary hospital 24 hours", clicks: 0, impressions: 2, ctr: 0, position: 10.5 },
+        { query: "cat vaccine price malaysia", clicks: 0, impressions: 1, ctr: 0, position: 47.0 },
+        { query: "gasing veterinary", clicks: 0, impressions: 1, ctr: 0, position: 51.0 },
+        { query: "cat vaccination", clicks: 0, impressions: 1, ctr: 0, position: 74.0 }
+      ],
+      countries: [
+        { country: "Malaysia", clicks: 1, impressions: 110 },
+        { country: "United States", clicks: 0, impressions: 20 },
+        { country: "Singapore", clicks: 0, impressions: 8 },
+        { country: "United Kingdom", clicks: 0, impressions: 6 }
+      ],
+      devices: { mobile: { clicks: 1, impressions: 95 }, desktop: { clicks: 0, impressions: 45 }, tablet: { clicks: 0, impressions: 4 } }
+    },
+    aiTraffic: {
+      sources: [
+        { engine: "ChatGPT", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Claude", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Gemini", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Perplexity", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Copilot", sessions: 0, pageViews: 0, avgDuration: "—" },
+        { engine: "Other AI", sessions: 0, pageViews: 0, avgDuration: "—" }
+      ]
+    },
+    pages: [
+      { path: "/blog", title: "Blog Index", views: 4, uniqueViews: 1, avgTime: "1:00", bounceRate: 0 },
+      { path: "/blog/tick-fever-dogs-malaysia-complete-guide", title: "Tick Fever in Dogs Malaysia — Complete Guide", views: 4, uniqueViews: 1, avgTime: "3:30", bounceRate: 0 },
+      { path: "/blog/dog-vaccination-schedule-malaysia-2026", title: "Dog Vaccination Schedule Malaysia 2026", views: 2, uniqueViews: 1, avgTime: "2:00", bounceRate: 0 },
+      { path: "/", title: "Homepage", views: 2, uniqueViews: 1, avgTime: "0:15", bounceRate: 50 }
+    ],
+    insights: [
+      { icon: "📚", text: "W5 is partial (Mar 28-31 only — 4 days). Low session count (3) expected, but 12 page views = 4 pages/session. Deep blog content engagement." },
+      { icon: "🦟", text: "Tick Fever blog post (published Mar 30) already getting 4 page views in its first 2 days — strong organic traction from fresh content." },
+      { icon: "🐕", text: "Dog Vaccination guide getting 2 views. Blog is now driving more page views than homepage (10 blog vs 2 homepage) — content strategy working." },
+      { icon: "🔍", text: "GSC: 144 impressions, 1 click (0.7% CTR), avg position 9.2. 'Gasing vet hospital' query converted at 33.3% CTR — branded queries converting well." },
+      { icon: "🤖", text: "AEO schema deployed Mar 30 — AI referrer tracking now live. Monitor GA4 'AI Traffic Channel Group' for chatbot-referred sessions from W6 onwards." }
     ]
   }
 ];
